@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "printf.h"
 
 int			main(int ac, char **av)
@@ -20,7 +19,6 @@ int			main(int ac, char **av)
 	lol = "lapin malin 1234";
 	c = 'c';
 //	lol = NULL;
-	ft_printf("%d|%d\n", 15, -15);
-	printf(   "%d|%d\n", 15, -15);
+	ft_printf("rien%-  125.64%\n");
 	return (0);
 }

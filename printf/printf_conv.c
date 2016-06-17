@@ -1,52 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_conv.c                                      :+:      :+:    :+:   */
+/*   printf_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/21 20:27:29 by hmarot            #+#    #+#             */
-/*   Updated: 2016/03/21 21:41:40 by hmarot           ###   ########.fr       */
+/*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
+/*   Updated: 2016/04/05 10:18:20 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-#include "libft.h"
 
-int		ft_conv(char *format, int index, t_print_op *p_op, va_list va)
+int		prf_conv(char *format, int i, t_env	*env)
 {
-	if (ft_memnchr(format[index], "di", 2))
-		p_op->conv = ft_cast(va, 1, 2 + p_op->modif);
-	if (ft_memnchr(format[index], "oux", 3))
-		p_op->conv = ft_cast(va, 0, 2 + p_op->modif);
-	if (ft_memnchr(format[index], "OUX", 3))
-		p_op->conv = ft_cast(va, 0, 3 + p_op->modif);
-	if (ft_memnchr(format[index], "D", 1))
-		p_op->conv = ft_cast(va, 1, 3 + p_op->modif);
-	if (ft_memnchr(format[index], "sp", 2))
-		p_op->conv = ft_cast(va, 0, 4);
-	if (ft_memnchr(format[index], "c", 1))
-		p_op->conv = ft_cast(va, 0, 0);
-	ft_conv_type(format[index], p_op);
-	return (index);
+	int		j;	
+	void	(*tab_conv[1])(t_env *env);
+//	write(1, "d", 1);
+
+	tab_conv[0] = prf_conv_mod;
+
+	j = char_chr(format[i], "%");
+	if (j != -1)
+	{
+		tab_conv[j](env);
+		return (i);
+	}
+	else
+	return (-1);
 }
 
-void	ft_conv_type(char i, t_print_op *p_op)
+void	prf_conv_mod(t_env *env)
 {
-	t_max	n;
-
-	n = p_op->conv;
-	if (ft_memnchr(i, "dDiuU", 5))
-		p_op->str = ft_itoa(n.i);
-	if (ft_memnchr(i, "pxX", 3))
-		p_op->str = ft_itoa_hexa(n.i);
-	if (ft_memnchr(i, "oO", 2))
-		p_op->str = ft_itoa_octal(n.i);
-	if (ft_memnchr(i, "sS", 2))
-		p_op->str = (char *)n.i;
-	if (ft_memnchr(i, "cC", 2))
-	{
-		p_op->str = (char *)ft_memalloc(2);
-		*(p_op->str) = (char)(n.i);
-	}
+//	write(1, "e", 1);
+	push_buff('%', env);
 }

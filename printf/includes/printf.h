@@ -1,53 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   printf_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/21 18:31:14 by hmarot            #+#    #+#             */
-/*   Updated: 2016/04/05 10:18:23 by hmarot           ###   ########.fr       */
+/*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
+/*   Updated: 2016/04/05 10:18:20 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
+#include <stdio.h>
+#include <unistd.h>
 
-typedef struct	s_max
+#define		BUFF_SIZE 100
+#define		SHARP (1)
+#define		ZERO (1 << 1)
+#define		LESS (1 << 2)
+#define		MORE (1 << 3)
+#define		SPACE (1 << 4)
+
+typedef	struct	s_env
 {
-	unsigned long int	i;
-	char					s;
-}				t_max;
+	char	flag;
+	char	pressi;
+	char	field;
+	char	modif;
+	char	buffer[BUFF_SIZE];
+	int		pos;
+}				t_env;
 
-typedef struct	s_print_op
-{
-	char		plus;
-	char		moins;
-	char		zerro;
-	char		space;
-	char		diez;
-	char		champ;
-	char		press;
-	char		modif;
-	t_max		conv;
-	char		*str;
-}				t_print_op;
 
-int				ft_printf(const char *restrict format, ...);
-int				ft_flag(char *format, int index, t_print_op *p_op);
-int				ft_champ(char *format, int index, t_print_op *p_op);
-int				ft_press(char *format, int index, t_print_op *p_op);
-int				ft_modif(char *format, int index, t_print_op *p_op);
-int				ft_conv(char *format, int index, t_print_op *p_op, va_list va);
-void			ft_conv_type(char i, t_print_op *p_op);
-t_max			ft_cast(va_list arg, int type, int modif);
-int				ft_print(t_print_op p_op, char c);
-int				ft_print_s(t_print_op p_op);
-int				ft_print_mod(t_print_op p_op);
-int				ft_print_pointer(t_print_op p_op);
-int				ft_print_d(t_print_op p_op);
-void			ft_init(t_print_op *p_op);
-void			ft_flag_space(t_print_op *p_op);
-void			ft_flag_moins(t_print_op *p_op);
-void			ft_flag_plus(t_print_op *p_op);
-void			ft_flag_diez(t_print_op *p_op);
-void			ft_flag_zerro(t_print_op *p_op);
+
+void	push_buff(char c, t_env *env);
+int		prf_conv(char *format, int i, t_env *env);
+int		char_chr(char c, char *chr);
+void	prf_conv_mod(t_env *env);
+int		ft_printf(const char *restrict format, ...);
+int		prf_flag(char *form, int i, t_env *env);
+void	prf_flag_sharp(t_env *env);
+void	prf_flag_zero(t_env *env);
+void	prf_flag_less(t_env *env);
+void	prf_flag_more(t_env *env);
+void	prf_flag_space(t_env *env);
+int		prf_pressi(char *form, int i, t_env *env);
+int		prf_field(char *form, int i, t_env *env);

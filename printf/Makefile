@@ -10,45 +10,33 @@
 #                                                                              #
 #******************************************************************************#
 
-SRC =	printf_cast.c\
-		printf_champ.c\
-		printf_conv.c\
-		printf_flag.c\
-		printf_main.c\
-		printf_modif.c\
-		printf_press.c\
-		printf_print.c
+SRC =	printf_conv.c 	\
+		mini_lib.c 		\
+		printf_main.c 	\
+		test.c			\
+		printf_flag.c	\
+		printf_pre_field.c
 
 LIB_PATH = libft/
 
-OBJ =	printf_cast.o\
-		printf_champ.o\
-		printf_conv.o\
-		printf_flag.o\
-		printf_main.o\
-		printf_modif.o\
-		printf_press.o\
-		printf_print.o
+INC_PATH = includes/
 
-LIB =	libft/libft.a
+OBJ =	
 
-NAME =	libftprintf.a
+LIB =	
+
+NAME =	test
 
 all : $(NAME)
 
 $(NAME) :
-	@make -C libft/ all
-	@gcc -c -I includes $(SRC)
-	@ar rc $(NAME) $(OBJ) $(LIB_PATH)*.o 
+	@gcc -o $(NAME) -I includes $(SRC)
 	@echo "$(NAME) compiler\n"
 
 clean :
-	@rm -f $(OBJ)
-	@echo "$(OBJ) clear\n"
 
 fclean :clean
 	@rm -f $(NAME) 
-	@rm -f libft/libft.a
 	@echo "$(NAME) clear\n"
 
 re : fclean all
