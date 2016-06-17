@@ -68,15 +68,37 @@ int		nb_len(long nb)
 	return (i);
 }
 
+int		nb_len_b(unsigned long nb, int b)
+{
+	double	tmp;
+	int		i;
+
+	tmp = nb;
+	i = 1;
+	while(tmp >= b)
+	{
+		(tmp = tmp / b);
+		++i;
+	}
+	return (i);	
+}
+
 void	prf_itoa(long nb, t_env *env)
 {
 	long	tmp;
-	long	i;
 
-	i = 0;
 	tmp = nb < 0 ? -nb : nb;
-	//nb < 0 ? push_buff('-', env) : 0;
 	if (tmp >= 10)
 		prf_itoa(tmp / 10, env);
 	push_buff((tmp % 10 + '0'), env);
+}
+
+void	prf_itoa_b(unsigned long nb, t_env *env, int b, int maj)
+{
+	char	*base;
+
+	base = maj == 0 ? "0123456789abcdef" : "0123456789ABCDEF";
+	if (nb >= b)
+		prf_itoa_b(nb / b, env, b, maj);
+	push_buff((base[nb % b]), env);
 }
