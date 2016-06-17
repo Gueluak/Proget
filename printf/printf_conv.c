@@ -12,26 +12,106 @@
 
 #include "printf.h"
 
-int		prf_conv(char *format, int i, t_env	*env)
+int		prf_conv(char *format, int i, t_env	*env, va_list ap)
 {
 	int		j;	
-	void	(*tab_conv[1])(t_env *env);
+	void	(*tab_conv[3])(t_env *env, va_list ap);
 //	write(1, "d", 1);
 
 	tab_conv[0] = prf_conv_mod;
+	tab_conv[1] = prf_con_id;
+	tab_conv[2] = prf_con_id;
 
-	j = char_chr(format[i], "%");
+	j = char_chr(format[i], "%id");
 	if (j != -1)
 	{
-		tab_conv[j](env);
+		tab_conv[j](env, ap);
 		return (i);
 	}
 	else
 	return (-1);
 }
 
-void	prf_conv_mod(t_env *env)
+void	prf_conv_mod(t_env *env, va_list ap)
 {
 //	write(1, "e", 1);
 	push_buff('%', env);
 }
+
+void	prf_con_s(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_ls(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_p(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_ld(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_id(t_env *env, va_list ap)
+{
+	int		arg;
+	int		len;
+	int		i;
+
+	arg = (int)prf_arg(ap, *env);
+	len = nb_len(arg);
+	i = len < env->pressi ? env->pressi : len;
+	env->flag & ZERO ? aply_signe(arg, env) : 0;
+	env->flag & LESS ? 0 : prf_pos_field(env, i + (arg < 0 || env->flag & MORE || env->flag & SPACE));
+	env->flag & ZERO ? 0 : aply_signe(arg, env);
+	prf_pos_pressi(env, len);
+	prf_itoa(arg, env);
+	env->flag & LESS ? prf_pos_field(env, i + (arg < 0 || env->flag & MORE || env->flag & SPACE)) : 0;
+}
+
+void	prf_con_o(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_lo(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_u(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_lu(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_x(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_lx(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_c(t_env *env, va_list ap)
+{
+	return;
+}
+
+void	prf_con_lc(t_env *env, va_list ap)
+{
+	return;
+}
+

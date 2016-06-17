@@ -10,12 +10,15 @@
 #                                                                              #
 #******************************************************************************#
 
-SRC =	printf_conv.c 	\
-		mini_lib.c 		\
-		printf_main.c 	\
-		test.c			\
-		printf_flag.c	\
-		printf_pre_field.c
+SRC =	printf_conv.c 		\
+		mini_lib.c 			\
+		printf_main.c 		\
+		test.c				\
+		printf_flag.c		\
+		printf_pre_field.c	\
+		printf_modif.c		\
+		printf_init.c		\
+		printf_arg.c
 
 LIB_PATH = libft/
 

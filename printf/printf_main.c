@@ -18,9 +18,11 @@ int		ft_printf(const char * format, ...)
 	char	*form;
 	t_env	env;
 	int		i;
+	va_list	ap;
 
+	va_start(ap, format);
 	form = (char *)format;
-	env.pos = 0;
+	prf_init(&env);
 	i = 0;
 	while (form[i])
 	{
@@ -32,10 +34,12 @@ int		ft_printf(const char * format, ...)
 			i = prf_flag(form, i + 1, &env);
 			i = prf_field(form, i, &env);
 			i = prf_pressi(form, i, &env);
-			i = prf_conv(form, i, &env);
+			i = prf_modif(form, i, &env);
+			i = prf_conv(form, i, &env, ap);
 		}
 		++i;
 	}
 	write(1, env.buffer, env.pos);
+	va_end(ap);
 	return (i);
 }
