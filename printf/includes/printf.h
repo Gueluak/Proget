@@ -70,3 +70,4 @@ void			aply_signe(long nb, t_env *env);
 void			prf_pos_field(t_env *env, int len);
 void			prf_itoa_b(unsigned long nb, t_env *env, int b, int maj);
 int				nb_len_b(unsigned long nb, int b);
+void			aply_sharp(t_env *env, int conv);

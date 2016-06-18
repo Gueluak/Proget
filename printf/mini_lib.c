@@ -28,6 +28,16 @@ void	push_buff(char c, t_env *env)
 	}
 }
 
+int		prf_strlen(char *str)
+{
+	int		i;
+
+	i = 0;
+	while (str[i])
+		++i;
+	return (i);
+}
+
 int		char_chr(char c, char *chr)
 {
 //	write(1, "c", 1);
@@ -66,6 +76,22 @@ int		nb_len(long nb)
 		++i;
 	}
 	return (i);
+}
+
+void	aply_sharp(t_env *env, int conv)
+{
+	if (conv == 1)
+	{
+		push_buff('0', env);
+		push_buff('x', env);
+	}
+	else if (conv == 2)
+	{
+		push_buff('0', env);
+		push_buff('X', env);
+	}
+	else if (conv == 3)
+		push_buff('0', env);
 }
 
 int		nb_len_b(unsigned long nb, int b)
