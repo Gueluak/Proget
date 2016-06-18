@@ -15,10 +15,10 @@
 int		ft_printf(const char * format, ...)
 {
 //	write(1, "a", 1);
-	char	*form;
-	t_env	env;
-	int		i;
-	va_list	ap;
+	char		*form;
+	t_env		env;
+	int			i;
+	va_list		ap;
 
 	va_start(ap, format);
 	form = (char *)format;
@@ -32,14 +32,17 @@ int		ft_printf(const char * format, ...)
 		else
 		{
 			i = prf_flag(form, i + 1, &env);
-			i = prf_field(form, i, &env);
-			i = prf_pressi(form, i, &env);
-			i = prf_modif(form, i, &env);
-			i = prf_conv(form, i, &env, ap);
+			(i != -1) ? (i = prf_field(form, i, &env)) : (env.err = 1);
+			(i != -1) ? (i = prf_pressi(form, i, &env)) : (env.err = 1);
+			(i != -1) ? (i = prf_modif(form, i, &env)) : (env.err = 1);
+			(i != -1) ? (i = prf_conv(form, i, &env, ap)) : (env.err = 1);
+			(i != -1) ? (0) : (env.err = 1);
 		}
 		++i;
+		if (env.err)
+			return (-1);
 	}
 	write(1, env.buffer, env.pos);
 	va_end(ap);
-	return (i);
+	return (env.ret + env.pos);
 }

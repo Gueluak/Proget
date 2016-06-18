@@ -11,135 +11,137 @@
 /* ************************************************************************** */
 
 #include "printf.h"
+#include <locale.h>
 
 int			main(int ac, char **av)
 {
-	char *str = "lapin123";
+	setlocale(LC_CTYPE, "");
+	wchar_t *str = L"lapén123";
 	printf("'null'\n");
-	ft_printf("lapin : |%s|\n", str);
-	printf(   "malin : |%s|\n", str);
-	ft_printf("lapin : |%s|\n",  str);
-	printf(   "malin : |%s|\n\n",  str);
+	ft_printf("lapin : |%S|\n", str);
+	printf(   "malin : |%S|\n", str);
+	ft_printf("lapin : |%S|\n",  str);
+	printf(   "malin : |%S|\n\n",  str);
 
-	ft_printf("lapin : |%.5s|\n", str);
-	printf(   "malin : |%.5s|\n", str);
-	ft_printf("lapin : |%.5s|\n",  str);
-	printf(   "malin : |%.5s|\n\n",  str);
+	ft_printf("lapin : |%.5S|\n", str);
+	printf(   "malin : |%.5S|\n", str);
+	ft_printf("lapin : |%.5S|\n",  str);
+	printf(   "malin : |%.5S|\n\n",  str);
 
-	ft_printf("lapin : |%10s|\n", str);
-	printf(   "malin : |%10s|\n", str);
-	ft_printf("lapin : |%10s|\n",  str);
-	printf(   "malin : |%10s|\n\n",  str);
+	ft_printf("lapin : |%10S|\n", str);
+	printf(   "malin : |%10S|\n", str);
+	ft_printf("lapin : |%10S|\n",  str);
+	printf(   "malin : |%10S|\n\n",  str);
 
-	ft_printf("lapin : |%10.5s|\n", str);
-	printf(   "malin : |%10.5s|\n", str);
-	ft_printf("lapin : |%10.5s|\n",  str);
-	printf(   "malin : |%10.5s|\n\n",  str);
+	ft_printf("lapin : |%10.5S|\n", str);
+	printf(   "malin : |%10.5S|\n", str);
+	ft_printf("lapin : |%10.5S|\n",  str);
+	printf(   "malin : |%10.5S|\n\n",  str);
 
 	printf("'-'\n")	;
-	ft_printf("lapin : |%-s|\n", str);
-	printf(   "malin : |%-s|\n", str);
-	ft_printf("lapin : |%-s|\n",  str);
-	printf(   "malin : |%-s|\n\n",  str);
+	ft_printf("lapin : |%-S|\n", str);
+	printf(   "malin : |%-S|\n", str);
+	ft_printf("lapin : |%-S|\n",  str);
+	printf(   "malin : |%-S|\n\n",  str);
 
-	ft_printf("lapin : |%-.5s|\n", str);
-	printf(   "malin : |%-.5s|\n", str);
-	ft_printf("lapin : |%-.5s|\n",  str);
-	printf(   "malin : |%-.5s|\n\n",  str);
+	ft_printf("lapin : |%-.5S|\n", str);
+	printf(   "malin : |%-.5S|\n", str);
+	ft_printf("lapin : |%-.5S|\n",  str);
+	printf(   "malin : |%-.5S|\n\n",  str);
 
-	ft_printf("lapin : |%-10s|\n", str);
-	printf(   "malin : |%-10s|\n", str);
-	ft_printf("lapin : |%-10s|\n",  str);
-	printf(   "malin : |%-10s|\n\n",  str);
+	ft_printf("lapin : |%-10S|\n", str);
+	printf(   "malin : |%-10S|\n", str);
+	ft_printf("lapin : |%-10S|\n",  str);
+	printf(   "malin : |%-10S|\n\n",  str);
 
-	ft_printf("lapin : |%-10.5s|\n", str);
-	printf(   "malin : |%-10.5s|\n", str);
-	ft_printf("lapin : |%-10.5s|\n",  str);
-	printf(   "malin : |%-10.5s|\n\n",  str);
+	ft_printf("lapin : |%-10.5S|\n", str);
+	printf(   "malin : |%-10.5S|\n", str);
+	ft_printf("lapin : |%-10.5S|\n",  str);
+	printf(   "malin : |%-10.5S|\n\n",  str);
 
 	printf("'+'\n")	;
-	ft_printf("lapin : |%+s|\n", str);
-	printf(   "malin : |%+s|\n", str);
-	ft_printf("lapin : |%+s|\n",  str);
-	printf(   "malin : |%+s|\n\n",  str);
+	ft_printf("lapin : |%+S|\n", str);
+	printf(   "malin : |%+S|\n", str);
+	ft_printf("lapin : |%+S|\n",  str);
+	printf(   "malin : |%+S|\n\n",  str);
 
-	ft_printf("lapin : |%+.5s|\n", str);
-	printf(   "malin : |%+.5s|\n", str);
-	ft_printf("lapin : |%+.5s|\n",  str);
-	printf(   "malin : |%+.5s|\n\n",  str);
+	ft_printf("lapin : |%+.5S|\n", str);
+	printf(   "malin : |%+.5S|\n", str);
+	ft_printf("lapin : |%+.5S|\n",  str);
+	printf(   "malin : |%+.5S|\n\n",  str);
 
-	ft_printf("lapin : |%+10s|\n", str);
-	printf(   "malin : |%+10s|\n", str);
-	ft_printf("lapin : |%+10s|\n",  str);
-	printf(   "malin : |%+10s|\n\n",  str);
+	ft_printf("lapin : |%+10S|\n", str);
+	printf(   "malin : |%+10S|\n", str);
+	ft_printf("lapin : |%+10S|\n",  str);
+	printf(   "malin : |%+10S|\n\n",  str);
 
-	ft_printf("lapin : |%+10.5s|\n", str);
-	printf(   "malin : |%+10.5s|\n", str);
-	ft_printf("lapin : |%+10.5s|\n",  str);
-	printf(   "malin : |%+10.5s|\n\n",  str);
+	ft_printf("lapin : |%+10.5S|\n", str);
+	printf(   "malin : |%+10.5S|\n", str);
+	ft_printf("lapin : |%+10.5S|\n",  str);
+	printf(   "malin : |%+10.5S|\n\n",  str);
 
 	printf("' '\n")	;
-	ft_printf("lapin : |% s|\n", str);
-	printf(   "malin : |% s|\n", str);
-	ft_printf("lapin : |% s|\n",  str);
-	printf(   "malin : |% s|\n\n",  str);
+	ft_printf("lapin : |% S|\n", str);
+	printf(   "malin : |% S|\n", str);
+	ft_printf("lapin : |% S|\n",  str);
+	printf(   "malin : |% S|\n\n",  str);
 
-	ft_printf("lapin : |% .5s|\n", str);
-	printf(   "malin : |% .5s|\n", str);
-	ft_printf("lapin : |% .5s|\n",  str);
-	printf(   "malin : |% .5s|\n\n",  str);
+	ft_printf("lapin : |% .5S|\n", str);
+	printf(   "malin : |% .5S|\n", str);
+	ft_printf("lapin : |% .5S|\n",  str);
+	printf(   "malin : |% .5S|\n\n",  str);
 
-	ft_printf("lapin : |% 10s|\n", str);
-	printf(   "malin : |% 10s|\n", str);
-	ft_printf("lapin : |% 10s|\n",  str);
-	printf(   "malin : |% 10s|\n\n",  str);
+	ft_printf("lapin : |% 10S|\n", str);
+	printf(   "malin : |% 10S|\n", str);
+	ft_printf("lapin : |% 10S|\n",  str);
+	printf(   "malin : |% 10S|\n\n",  str);
 
-	ft_printf("lapin : |% 10.5s|\n", str);
-	printf(   "malin : |% 10.5s|\n", str);
-	ft_printf("lapin : |% 10.5s|\n",  str);
-	printf(   "malin : |% 10.5s|\n\n",  str);
+	ft_printf("lapin : |% 10.5S|\n", str);
+	printf(   "malin : |% 10.5S|\n", str);
+	ft_printf("lapin : |% 10.5S|\n",  str);
+	printf(   "malin : |% 10.5S|\n\n",  str);
 
 	printf("'0'\n")	;
-	ft_printf("lapin : |%0s|\n", str);
-	printf(   "malin : |%0s|\n", str);
-	ft_printf("lapin : |%0s|\n",  str);
-	printf(   "malin : |%0s|\n\n",  str);
+	ft_printf("lapin : |%0S|\n", str);
+	printf(   "malin : |%0S|\n", str);
+	ft_printf("lapin : |%0S|\n",  str);
+	printf(   "malin : |%0S|\n\n",  str);
 
-	ft_printf("lapin : |%0.5s|\n", str);
-	printf(   "malin : |%0.5s|\n", str);
-	ft_printf("lapin : |%0.5s|\n",  str);
-	printf(   "malin : |%0.5s|\n\n",  str);
+	ft_printf("lapin : |%0.5S|\n", str);
+	printf(   "malin : |%0.5S|\n", str);
+	ft_printf("lapin : |%0.5S|\n",  str);
+	printf(   "malin : |%0.5S|\n\n",  str);
 
-	ft_printf("lapin : |%010s|\n", str);
-	printf(   "malin : |%010s|\n", str);
-	ft_printf("lapin : |%010s|\n",  str);
-	printf(   "malin : |%010s|\n\n",  str);
+	ft_printf("lapin : |%010S|\n", str);
+	printf(   "malin : |%010S|\n", str);
+	ft_printf("lapin : |%010S|\n",  str);
+	printf(   "malin : |%010S|\n\n",  str);
 
-	ft_printf("lapin : |%010.5s|\n", str);
-	printf(   "malin : |%010.5s|\n", str);
-	ft_printf("lapin : |%010.5s|\n",  str);
-	printf(   "malin : |%010.5s|\n\n",  str);
+	ft_printf("lapin : |%010.5S|\n", str);
+	printf(   "malin : |%010.5S|\n", str);
+	ft_printf("lapin : |%010.5S|\n",  str);
+	printf(   "malin : |%010.5S|\n\n",  str);
 
 	printf("'#'\n")	;
-	ft_printf("lapin : |%#s|\n", str);
-	printf(   "malin : |%#s|\n", str);
-	ft_printf("lapin : |%#s|\n",  str);
-	printf(   "malin : |%#s|\n\n",  str);
+	ft_printf("lapin : |%#S|\n", str);
+	printf(   "malin : |%#S|\n", str);
+	ft_printf("lapin : |%#S|\n",  str);
+	printf(   "malin : |%#S|\n\n",  str);
 
-	ft_printf("lapin : |%#.5s|\n", str);
-	printf(   "malin : |%#.5s|\n", str);
-	ft_printf("lapin : |%#.5s|\n",  str);
-	printf(   "malin : |%#.5s|\n\n",  str);
+	ft_printf("lapin : |%#.5S|\n", str);
+	printf(   "malin : |%#.5S|\n", str);
+	ft_printf("lapin : |%#.5S|\n",  str);
+	printf(   "malin : |%#.5S|\n\n",  str);
 
-	ft_printf("lapin : |%#10s|\n", str);
-	printf(   "malin : |%#10s|\n", str);
-	ft_printf("lapin : |%#10s|\n",  str);
-	printf(   "malin : |%#10s|\n\n",  str);
+	ft_printf("lapin : |%#10S|\n", str);
+	printf(   "malin : |%#10S|\n", str);
+	ft_printf("lapin : |%#10S|\n",  str);
+	printf(   "malin : |%#10S|\n\n",  str);
 
-	ft_printf("lapin : |%#10.5s|\n", str);
-	printf(   "malin : |%#10.5s|\n", str);
-	ft_printf("lapin : |%#10.5s|\n",  str);
-	printf(   "malin : |%#10.5s|\n\n",  str);
+	ft_printf("lapin : |%#10.5S|\n", str);
+	printf(   "malin : |%#10.5S|\n", str);
+	ft_printf("lapin : |%#10.5S|\n",  str);
+	printf(   "malin : |%#10.5S|\n\n",  str);
 
 	return (0);
 }

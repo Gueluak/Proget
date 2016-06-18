@@ -20,4 +20,6 @@ void	prf_init(t_env *env)
 	env->field = 0;
 	env->modif = 0;
 	env->pos = 0;
+	env->ret = 0;
+	env->err = 0;
 }

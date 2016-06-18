@@ -13,6 +13,7 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <wchar.h>
 
 #define		BUFF_SIZE 100
 #define		SHARP (1)
@@ -29,6 +30,8 @@ typedef	struct	s_env
 	char	modif;
 	char	buffer[BUFF_SIZE];
 	int		pos;
+	int		ret;
+	int		err;
 }				t_env;
 
 
@@ -71,3 +74,6 @@ void			prf_pos_field(t_env *env, int len);
 void			prf_itoa_b(unsigned long nb, t_env *env, int b, int maj);
 int				nb_len_b(unsigned long nb, int b);
 void			aply_sharp(t_env *env, int conv);
+int				prf_strlen(char *str);
+int				push_uni(wchar_t c, t_env *env, int nbbi);
+int				prf_strlen_uni(wchar_t *str);

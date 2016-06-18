@@ -13,7 +13,7 @@
 SRC =	printf_conv.c 		\
 		mini_lib.c 			\
 		printf_main.c 		\
-		test.c				\
+		testout.c				\
 		printf_flag.c		\
 		printf_pre_field.c	\
 		printf_modif.c		\
