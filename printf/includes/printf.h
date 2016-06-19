@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_main.c                                      :+:      :+:    :+:   */
+/*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,17 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h>
-#include <stdio.h>
-#include <unistd.h>
-#include <wchar.h>
+#ifndef PRINTF_H
+# define PRINTF_H
+# include <stdarg.h>
+# include <stdio.h>
+# include <unistd.h>
+# include <wchar.h>
 
-#define		BUFF_SIZE 100
-#define		SHARP (1)
-#define		ZERO (1 << 1)
-#define		LESS (1 << 2)
-#define		MORE (1 << 3)
-#define		SPACE (1 << 4)
+# define BUFF_SIZE 100
+# define SHARP (1)
+# define ZERO (1 << 1)
+# define LESS (1 << 2)
+# define MORE (1 << 3)
+# define SPACE (1 << 4)
 
 typedef	struct	s_env
 {
@@ -33,8 +35,6 @@ typedef	struct	s_env
 	int		ret;
 	int		err;
 }				t_env;
-
-
 
 void			push_buff(char c, t_env *env);
 int				prf_conv(char *format, int i, t_env *env, va_list ap);
@@ -77,3 +77,6 @@ void			aply_sharp(t_env *env, int conv);
 int				prf_strlen(char *str);
 int				push_uni(wchar_t c, t_env *env, int nbbi);
 int				prf_strlen_uni(wchar_t *str);
+int				prf_main_b(char *form, t_env *env, int i, va_list ap);
+
+#endif

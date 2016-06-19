@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_main.c                                      :+:      :+:    :+:   */
+/*   printf_flag.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -28,33 +28,4 @@ int		prf_flag(char *form, int i, t_env *env)
 		++i;
 	}
 	return (i);
-}
-
-void	prf_flag_sharp(t_env *env)
-{
-	env->flag |= SHARP;
-}
-
-void	prf_flag_zero(t_env *env)
-{
-	if ((env->flag & LESS) == 0)
-		env->flag |= ZERO;
-}
-
-void	prf_flag_less(t_env *env)
-{
-	env->flag &= ~ZERO;
-	env->flag |= LESS;
-}
-
-void	prf_flag_more(t_env *env)
-{
-	env->flag &= ~SPACE;
-	env->flag |= MORE;
-}
-
-void	prf_flag_space(t_env *env)
-{
-	if ((env->flag & MORE) == 0)
-		env->flag |= SPACE;
 }

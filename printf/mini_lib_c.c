@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_init.c                                      :+:      :+:    :+:   */
+/*   printf_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2016/06/19 11:28:38 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/04/05 10:18:20 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	prf_init(t_env *env)
+void	aply_signe(long nb, t_env *env)
 {
-	env->flag = 0;
-	env->pressi = -1;
-	env->field = 0;
-	env->modif = 0;
-	env->pos = 0;
-	env->ret = 0;
-	env->err = 0;
+	if (nb < 0)
+		push_buff('-', env);
+	else if (env->flag & MORE)
+		push_buff('+', env);
+	else if (env->flag & SPACE)
+		push_buff(' ', env);
 }

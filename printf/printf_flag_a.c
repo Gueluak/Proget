@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_init.c                                      :+:      :+:    :+:   */
+/*   printf_flag_a.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2016/06/19 11:28:38 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/04/05 10:18:20 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-void	prf_init(t_env *env)
+void	prf_flag_sharp(t_env *env)
 {
-	env->flag = 0;
-	env->pressi = -1;
-	env->field = 0;
-	env->modif = 0;
-	env->pos = 0;
-	env->ret = 0;
-	env->err = 0;
+	env->flag |= SHARP;
+}
+
+void	prf_flag_zero(t_env *env)
+{
+	if ((env->flag & LESS) == 0)
+		env->flag |= ZERO;
+}
+
+void	prf_flag_less(t_env *env)
+{
+	env->flag &= ~ZERO;
+	env->flag |= LESS;
+}
+
+void	prf_flag_more(t_env *env)
+{
+	env->flag &= ~SPACE;
+	env->flag |= MORE;
+}
+
+void	prf_flag_space(t_env *env)
+{
+	if ((env->flag & MORE) == 0)
+		env->flag |= SPACE;
 }
