@@ -1,0 +1,13 @@
+#include "printf.h"
+#include <locale.h>
+
+int			main(int ac, char **av)
+{
+	int	i = 0;
+	while (i < 10000000)
+	{
+		++i;
+		ft_printf("%d\n",i);
+	}
+	return (0);
+}
