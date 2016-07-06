@@ -7,7 +7,7 @@ int			main(int ac, char **av)
 	while (i < 10000000)
 	{
 		++i;
-		ft_printf("%d\n",i);
+		printf("%d\n",i);
 	}
 	return (0);
 }
