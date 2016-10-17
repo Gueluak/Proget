@@ -10,26 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
-#include "libft.h"
-#include <pthread.h>
-#include <time.h>
-#include <fcntl.h>
-#include <math.h>
 
 int		main(int ac, char **av)
 {
 	t_graf	graf;
 	t_push	push;
 	t_point	*c;
-	t_pos	pos;
-	t_pos	size;
 
-	pos.x = (ac == 4 ? ft_atoi(av[2]) : 200);
-	pos.y = (ac == 4 ? ft_atoi(av[3]) : 200);
-	size.x = 1200;
-	size.y = 900;
 	if (ac < 2)
 		ft_error(1);
 	graf.push = &push;
@@ -39,7 +27,7 @@ int		main(int ac, char **av)
 	graf.mlx_i = (t_image *)mlx_new_image(graf.mlx_p, 1200, 900);
 	graf.grid = ft_read_doc(av[1], &graf);
 	ft_push_to_image(&graf, graf.grid, graf.mlx_i);
-	graf.mlx_w = mlx_new_window(graf.mlx_p, size, pos, av[1]);
+	graf.mlx_w = mlx_new_window(graf.mlx_p, 1200, 900, av[1]);
 	mlx_put_image_to_window(graf.mlx_p, graf.mlx_w, graf.mlx_i, 0, 0);
 	mlx_hook(graf.mlx_w, 2, key_on, &graf);
 	mlx_key_hook(graf.mlx_w, key_off, &graf);
@@ -62,9 +50,21 @@ void	init_fdf(t_graf *graf, t_push *push, t_point *c)
 	graf->Z.x = 0;
 	graf->Z.y = 0;
 	graf->Z.z = 1;
+	graf->coef = 0.5;
+	graf->rot_x = 0;
+	graf->rot_y = 0;
+	graf->rot_z = 0;
+	graf->zoom = 10;
+	graf->face = 0;
+	graf->shadow = 30;
 	c->x = 1.2;
 	c->y = 2.5;
 	c->z = 5.1;
+
+}
+
+void	init_fdf_2(t_graf *graf, t_push *push, t_point *c)
+{
 	push->un = 0;
 	push->trois = 0;
 	push->quatre = 0;
@@ -81,11 +81,4 @@ void	init_fdf(t_graf *graf, t_push *push, t_point *c)
 	push->plus = 0;
 	push->slash = 0;
 	push->etoil = 0;
-	graf->coef = 0.5;
-	graf->rot_x = 0;
-	graf->rot_y = 0;
-	graf->rot_z = 0;
-	graf->zoom = 10;
-	graf->face = 0;
-	graf->shadow = 30;
 }

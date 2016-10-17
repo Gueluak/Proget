@@ -639,7 +639,7 @@ int get_mouse_button(NSEventType eventtype)
 // mlx API
  
 
-void *mlx_new_window(mlx_ptr_t *mlx_ptr, t_pos size, t_pos pos, char *title)
+void *mlx_new_window(mlx_ptr_t *mlx_ptr, int size_x, int size_y, char *title)
 {
   mlx_win_list_t	*newwin;
   NSString		*str;
@@ -652,7 +652,7 @@ void *mlx_new_window(mlx_ptr_t *mlx_ptr, t_pos size, t_pos pos, char *title)
   newwin->pixmgt = 1;
   mlx_ptr->win_list = newwin;
 
-  NSRect windowRect = NSMakeRect(pos.x, pos.y, size.x, size.y);
+  NSRect windowRect = NSMakeRect(100, 100, size_x, size_y);
   str = [NSString stringWithCString:title encoding:NSASCIIStringEncoding];
   newwin->winid = [[MlxWin alloc] initWithRect:windowRect andTitle:str pfaAttrs:pfa_attrs];
   if (newwin->winid)
@@ -688,7 +688,7 @@ void mlx_mouse_hook(mlx_win_list_t *win_ptr, int (*funct_ptr)(), void *param)
   [(id)(win_ptr->winid) setEvent:4 andFunc:funct_ptr andParam:param];
 }
 
-void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int (*funct_ptr)(), void *param)
+void mlx_hook(mlx_win_list_t *win_ptr, int x_event, int x_mask, int (*funct_ptr)(), void *param)
 {
   [(id)(win_ptr->winid) setEvent:x_event andFunc:funct_ptr andParam:param];
 }

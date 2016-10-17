@@ -12,37 +12,30 @@
 
 #ifndef FT_LS_H
 # define FT_LS_H
+# include "libft.h"
+# include "printf.h"
 
 typedef struct	s_opt
 {
-	short		l;
-	short		R;
-	short		a;
-	short		r;
-	short		t;
+	int				l:1;
+	int				R:1;
+	int				a:1;
+	int				r:1;
+	int				t:1;
 	char		*path;
 }				t_opt;
 
+typedef struct	s_l
+{
+	
+}				t_l;
+
 typedef struct	s_lst
 {
-	char			*path_name;
 	char			*name;
-	time_t			time;
-	struct s_lst	*top;
-	struct s_lst	*prev;
+	t_l				*data;
 	struct s_lst	*next;
+	struct s_lst	*prev;
 }				t_lst;
-
-void	ft_init(t_opt *opt);
-int		ls_pars(char **av, t_opt *opt);
-int		ft_pars(t_opt *opt, char *format);
-int		ft_arg_l(t_opt *opt);
-int		ft_arg_R(t_opt *opt);
-int		ft_arg_a(t_opt *opt);
-int		ft_arg_r(t_opt *opt);
-int		ft_arg_t(t_opt *opt);
-int		lst_new(t_lst **lst);
-int		lst_del(t_lst **lst);
-int		lst_name_short(t_lst **lst, int size);
 
 #endif

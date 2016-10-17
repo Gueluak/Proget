@@ -6,7 +6,7 @@
 #    By: hmarot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/02 01:40:50 by hmarot            #+#    #+#              #
-#    Updated: 2016/03/20 22:19:33 by hmarot           ###   ########.fr        #
+#    Updated: 2016/09/26 20:17:40 by hmarot           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -22,7 +22,7 @@ LIBFT = libft/libft.a
 
 PTHREAD = -lpthread
 
-NAME = FDF
+NAME = FDF2
 
 INC_PATH = includes/
 

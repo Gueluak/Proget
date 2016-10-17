@@ -6,7 +6,7 @@
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2016/06/19 11:52:35 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/09/09 15:12:23 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void	prf_conv_mod(t_env *env, va_list ap)
 {
 	if (ap == NULL)
 		ap = NULL;
+	env->flag & LESS ? 0 : prf_pos_field(env, 1);
 	push_buff('%', env);
+	env->flag & LESS ? prf_pos_field(env, 1) : 0;
 }
 
 void	prf_con_s(t_env *env, va_list ap)
@@ -29,6 +31,7 @@ void	prf_con_s(t_env *env, va_list ap)
 	i = 0;
 	env->modif = 3;
 	str = (char *)prf_u_arg(ap, *env);
+	str == NULL ? str = "(null)" : 0;
 	len = prf_strlen(str);
 	env->pressi == -1 ? env->pressi = len : 0;
 	j = len < env->pressi ? len : env->pressi;
@@ -53,6 +56,11 @@ void	prf_con_ls(t_env *env, va_list ap)
 	size = 0;
 	env->modif = 3;
 	str = (wchar_t *)prf_u_arg(ap, *env);
+	if (str == NULL)
+	{
+		return_null(env);
+		return;
+	}
 	len = prf_strlen_uni(str);
 	env->pressi == -1 ? env->pressi = len : 0;
 	j = len < env->pressi ? len : env->pressi;

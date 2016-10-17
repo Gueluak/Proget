@@ -6,7 +6,7 @@
 #    By: hmarot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/02/29 17:18:27 by hmarot            #+#    #+#              #
-#    Updated: 2016/03/24 19:07:56 by hmarot           ###   ########.fr        #
+#    Updated: 2016/09/17 18:47:41 by hmarot           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -14,6 +14,7 @@ SRC =	printf_conv.c 		\
 		printf_conv_b.c 	\
 		printf_conv_c.c 	\
 		printf_conv_d.c 	\
+		printf_conv_bonus.c	\
 		mini_lib.c 			\
 		mini_lib_b.c		\
 		mini_lib_c.c		\
@@ -25,7 +26,7 @@ SRC =	printf_conv.c 		\
 		printf_init.c		\
 		printf_arg.c
 
-FLAGS = -Wall -Wextra -Werror -Weverything
+FLAGS = -Wall -Wextra -Werror -O3
 
 INC_PATH = includes/
 
@@ -33,6 +34,7 @@ OBJ =	printf_conv.o 		\
 		printf_conv_b.o 	\
 		printf_conv_c.o 	\
 		printf_conv_d.o 	\
+		printf_conv_bonus.o	\
 		mini_lib.o 			\
 		mini_lib_b.o		\
 		mini_lib_c.o		\

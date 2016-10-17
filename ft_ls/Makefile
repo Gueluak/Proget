@@ -14,7 +14,7 @@ FLAG_GCC = -Werror -Wall -Wextra
 
 LIB_PATH = libft/
 
-LIBFT = -lft
+LIBFT = -lftprintf
 
 NAME = ft_ls
 

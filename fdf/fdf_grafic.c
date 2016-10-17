@@ -85,37 +85,20 @@ void	ft_push_to_image(t_graf *graf, short **grid, t_image *image)
 	{
 		if (i < 16)
 		{
-//		writef("lapin\n ");
-	thr[i].graf = graf;
+			thr[i].graf = graf;
 			thr[i].y = graf->by;
 			pthread_create(&(thruno[i]), NULL, thr_uno, &thr[i]);
 			graf->by--;
 			i++;
 		}
 		else
-		{
-			while (i > 0)
-			{
-				--i;
-//		writef("chien\nr");
+			while (i-- > 0)
 				pthread_join(thruno[i], NULL);
-//		pthread_create(&(thruno[graf->by]), NULL, thr_uno, graf);
-			}
-//			i = 0;
-		}
 	}
 	i++;
-			while (i > 0)
-			{
-				--i;
-//		writef("chien\nr");
-				pthread_join(thruno[i], NULL);
-//		pthread_create(&(thruno[graf->by]), NULL, thr_uno, graf);
-			}
-//			i = 0;
+	while (i-- > 0)
+		pthread_join(thruno[i], NULL);
 	graf->by = graf->y - 1;
-	
-//	writef("ok\n ");
 	ft_cross_to_image(image);
 }
 
@@ -123,18 +106,36 @@ void	ft_pixel_to_image(t_image *image, int x, int y, int color)
 {
 	if (x < 599 && x > -600 && y < 449 && y > -450)
 	{
-		if (*((int *)(unsigned long)(image->buffer + (4 * (x + 600)) +	\
+		if (*((int *)(image->buffer + (4 * (x + 600)) +	\
 									 (image->widht * 4 * (y + 450)))) < color)
-			*((int *)/*(unsigned long)*/(image->buffer + (4 * (x + 600)) +	\
-									 (image->widht * 4 * (y + 450)))) = color;
-		if (*((int *)(unsigned long)(image->buffer + (4 * (x + 601)) +	\
-									 (image->widht * 4 * (y + 450)))) < color)
-			*((int *)(image->buffer + (4 * (x + 601)) +	\
-									 (image->widht * 4 * (y + 450)))) = color;
-		if ((x != -600) && *((int *)(unsigned long)(image->buffer + (4 * (x + 600)) + \
-									 (image->widht * 4 * (y + 451)))) < color)
 			*((int *)(image->buffer + (4 * (x + 600)) +	\
-									 (image->widht * 4 * (y + 451)))) = color;
+									 (image->widht * 4 * (y + 450)))) = color;
+	}
+}
+
+void	ft_prtri_to_image(t_image *image, t_point p1, t_point p2, t_point p3)
+{
+	t_point ink;
+
+	if (((p1.x > 600 || p1.x < -600 || p1.y > 450 || p1.y < -450) &&	\
+	(p3.x > 600 || p3.x < -600 || p3.y > 450 || p3.y < -450) &&	\
+	(p2.x > 600 || p2.x < -600 || p2.y > 450 || p2.y < -450) &&	\
+	(p3.x > 600 || p3.x < -600 || p3.y > 450 || p3.y < -450)) ||	\
+	(p1.z < 0 || p2.z < 0 || p3.z < 0))
+		return;
+	if (p1.x >= p2.x && p1.x <= p3.x)
+	{
+		ink.x = p3.x + (p1.y - p3.y) / (p2.y - p3.y) * (p2.x - p3.x);
+		ink.y = 
+		ink.c = ;
+	}
+	else if (p3.x >= p2.x && p3.x <= p1.x)
+	{
+
+	}
+	else if (p2.x >= p1.x && p2.x <= p3.x)
+	{
+
 	}
 }
 
@@ -151,7 +152,7 @@ void	ft_tri_to_image(t_image *image, t_point p1, t_point p2, t_point p3)
 		(p2.x > 600 || p2.x < -600 || p2.y > 450 || p2.y < -450) &&	\
 		(p3.x > 600 || p3.x < -600 || p3.y > 450 || p3.y < -450)) ||	\
 		(p1.z < 0 || p2.z < 0 || p3.z < 0))
-		return ;
+		return;
 	uno.x = p1.x - p3.x;
 	uno.y = p1.y - p3.y;
 	dos.x = p2.x - p3.x;
@@ -162,14 +163,12 @@ void	ft_tri_to_image(t_image *image, t_point p1, t_point p2, t_point p3)
 	pas = 0.0;
 	c.x = (float)(p1.c) - (float)(p3.c);
 	c.y = (float)(p2.c) - (float)(p3.c);
-//	tmp.c = p1.c - p2.c;
 	uno.x = (float)uno.x / (float)k;
 	uno.y = (float)uno.y / (float)k;
 	dos.x = (float)dos.x / (float)k;
 	dos.y = (float)dos.y / (float)k;
 	c.y = (float)c.y / (float)k;
 	c.x = (float)c.x / (float)k;
-//	tmp.c = (float)tmp.c / (float)k;
 	while (pas <= k)
 	{
 		if (p3.z > 0 && p1.z && p2.z)
@@ -182,7 +181,6 @@ void	ft_tri_to_image(t_image *image, t_point p1, t_point p2, t_point p3)
 			p2.c = p3.c + ((int)((float)pas * c.y));
 			ft_line_to_image(image, p1, p2, 1);
 		}
-//			printf("x = %f, y = %f\n",ini.x,ini.y);
 		++pas;
 	}
 }
@@ -200,30 +198,27 @@ void	ft_line_to_image(t_image *image, t_point p1, t_point p2, int face)
 	{
 		if (((p1.x > 600 || p1.x < -600 || p1.y > 450 || p1.y < -450) && \
 			 (p2.x > 600 || p2.x < -600 || p2.y > 450 || p2.y < -450)) || \
-			(p1.z < 0 || p2.z < 0))
+			   (p1.z < 0 || p2.z < 0))
 			return;
 	}
 	ini.x = p1.x - p2.x;
 	ini.y = p1.y - p2.y;
 	k = ft_abs(ini.x) > ft_abs(ini.y) ? ft_abs(ini.x) : ft_abs(ini.y);
-		pas = 0.0;
-		c.y = (float)(p1.c % 256) - (float)(p2.c % 256);
-		c.x = (float)(p1.c / 256) - (float)(p2.c / 256);
-//	tmp.c = p1.c - p2.c;
-		tmp.x = (float)ini.x / (float)k;
-		tmp.y = (float)ini.y / (float)k;
-		c.y = (float)c.y / (float)k;
-		c.x = (float)c.x / (float)k;
-//	tmp.c = (float)tmp.c / (float)k;
-		while (pas <= k)
+	pas = 0.0;
+	c.y = (float)(p1.c % 256) - (float)(p2.c % 256);
+	c.x = (float)(p1.c / 256) - (float)(p2.c / 256);
+	tmp.x = (float)ini.x / (float)k;
+	tmp.y = (float)ini.y / (float)k;
+	c.y = (float)c.y / (float)k;
+	c.x = (float)c.x / (float)k;
+	while (pas <= k)
+	{
+		if (p2.z > 0 && p1.z)
 		{
-			if (p2.z > 0 && p1.z)
-			{
-				ft_pixel_to_image(image, p2.x + (int)(pas * tmp.x), p2.y + \
-								  (int)(pas * tmp.y),					\
-								  p2.c + ((int)((float)pas * c.y) + (256 * (unsigned int)((float)pas * c.x))));
-			}
-//			printf("x = %f, y = %f\n",ini.x,ini.y);
-			++pas;
+			ft_pixel_to_image(image, p2.x + (int)(pas * tmp.x), p2.y + \
+			(int)(pas * tmp.y),											\
+			p2.c + ((int)((float)pas * c.y) + (256 * (unsigned int)((float)pas * c.x))));
+		}
+		++pas;
 	}
 }

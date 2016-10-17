@@ -29,23 +29,23 @@ typedef struct	s_pos
 
 typedef struct	s_push
 {
-	int			a;
-	int			w;
-	int			s;
-	int			d;
-	int			un;
-	int			trois;
-	int			quatre;
-	int			cinq;
-	int			six;
-	int			sept;
-	int			huit;
-	int			neuf;
-	int			moins;
-	int			plus;
-	int			face;
-	int			slash;
-	int			etoil;
+	int			a:1;
+	int			w:1;
+	int			s:1;
+	int			d:1;
+	int			un:1;
+	int			trois:1;
+	int			quatre:1;
+	int			cinq:1;
+	int			six:1;
+	int			sept:1;
+	int			huit:1;
+	int			neuf:1;
+	int			moins:1;
+	int			plus:1;
+	int			face:1;
+	int			slash:1;
+	int			etoil:1;
 }				t_push;
 
 typedef struct	s_image
@@ -107,6 +107,7 @@ t_point			translate(t_point p, t_point t);
 void			if_1(int *t, short ***grid, t_graf *graf);
 void			if_2(int *t, short ***grid, char *buff, t_graf *graf);
 void			init_fdf(t_graf *graf, t_push *push, t_point *c);
+void			init_fdf_2(t_graf *graf, t_push *push, t_point *c);
 void			loop_in(t_push *push, t_point *c, t_graf *graf);
 void			key_on_2(int k, t_push *push);
 void			key_off_2(int k, t_push *push);

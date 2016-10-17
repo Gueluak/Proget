@@ -10,13 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
-#include "libft.h"
-#include <pthread.h>
-#include <time.h>
-#include <fcntl.h>
-#include <math.h>
 
 short	**ft_read_doc(char *file, t_graf *graf)
 {
