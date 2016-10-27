@@ -12,6 +12,17 @@
 
 #ifndef FDF_H
 # define FDF_H
+# include "mlx.h"
+# include "libft.h"
+# include "printf.h"
+# include <pthread.h>
+# include <time.h>
+# include <fcntl.h>
+# include <math.h>
+
+# define Z lz
+# define Y ly
+# define X lx
 
 typedef struct	s_point
 {
@@ -29,23 +40,23 @@ typedef struct	s_pos
 
 typedef struct	s_push
 {
-	int			a:1;
-	int			w:1;
-	int			s:1;
-	int			d:1;
-	int			un:1;
-	int			trois:1;
-	int			quatre:1;
-	int			cinq:1;
-	int			six:1;
-	int			sept:1;
-	int			huit:1;
-	int			neuf:1;
-	int			moins:1;
-	int			plus:1;
-	int			face:1;
-	int			slash:1;
-	int			etoil:1;
+	unsigned int			a:1;
+	unsigned int			w:1;
+	unsigned int			s:1;
+	unsigned int			d:1;
+	unsigned int			un:1;
+	unsigned int			trois:1;
+	unsigned int			quatre:1;
+	unsigned int			cinq:1;
+	unsigned int			six:1;
+	unsigned int			sept:1;
+	unsigned int			huit:1;
+	unsigned int			neuf:1;
+	unsigned int			moins:1;
+	unsigned int			plus:1;
+	unsigned int			face:1;
+	unsigned int			slash:1;
+	unsigned int			etoil:1;
 }				t_push;
 
 typedef struct	s_image
@@ -60,9 +71,9 @@ typedef struct	s_image
 typedef struct	s_graf
 {
 	t_point		c;
-	t_point		X;
-	t_point		Y;
-	t_point		Z;
+	t_point		lx;
+	t_point		ly;
+	t_point		lz;
 	int			l;
 	int			h;
 	int			a;
@@ -107,15 +118,17 @@ t_point			translate(t_point p, t_point t);
 void			if_1(int *t, short ***grid, t_graf *graf);
 void			if_2(int *t, short ***grid, char *buff, t_graf *graf);
 void			init_fdf(t_graf *graf, t_push *push, t_point *c);
-void			init_fdf_2(t_graf *graf, t_push *push, t_point *c);
+void			init_fdf_2(t_push *push);
 void			loop_in(t_push *push, t_point *c, t_graf *graf);
+void			loop_in_b(t_push *push, t_graf *graf);
+void			loop_in_c(t_push *push, t_graf *graf);
 void			key_on_2(int k, t_push *push);
 void			key_off_2(int k, t_push *push);
-void			ft_cross_to_image(t_image *image);
-void			ft_push_to_image(t_graf *graf, short **grid, t_image *image);
+void			ft_push_to_image(t_graf *graf, short **grid);
 void			ft_pixel_to_image(t_image *image, int x, int y, int color);
-void			ft_line_to_image(t_image *image, t_point p1, t_point p2, int face);
-void			ft_tri_to_image(t_image *image, t_point p1, t_point p2, t_point p3);
+void			ft_line_to_image\
+					(t_image *image, t_point p1, t_point p2);
 void			ft_error(int e);
+int				ft_push_to_image_in(t_graf *graf, pthread_t thruno[16]);
 
 #endif

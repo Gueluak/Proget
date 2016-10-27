@@ -26,10 +26,10 @@ int		main(int ac, char **av)
 	graf.mlx_p = mlx_init();
 	graf.mlx_i = (t_image *)mlx_new_image(graf.mlx_p, 1200, 900);
 	graf.grid = ft_read_doc(av[1], &graf);
-	ft_push_to_image(&graf, graf.grid, graf.mlx_i);
+	ft_push_to_image(&graf, graf.grid);
 	graf.mlx_w = mlx_new_window(graf.mlx_p, 1200, 900, av[1]);
 	mlx_put_image_to_window(graf.mlx_p, graf.mlx_w, graf.mlx_i, 0, 0);
-	mlx_hook(graf.mlx_w, 2, key_on, &graf);
+	mlx_hook(graf.mlx_w, 2, 1, key_on, &graf);
 	mlx_key_hook(graf.mlx_w, key_off, &graf);
 	mlx_loop_hook(graf.mlx_p, loop_only, &graf);
 	mlx_loop(graf.mlx_p);
@@ -60,10 +60,10 @@ void	init_fdf(t_graf *graf, t_push *push, t_point *c)
 	c->x = 1.2;
 	c->y = 2.5;
 	c->z = 5.1;
-
+	init_fdf_2(push);
 }
 
-void	init_fdf_2(t_graf *graf, t_push *push, t_point *c)
+void	init_fdf_2(t_push *push)
 {
 	push->un = 0;
 	push->trois = 0;

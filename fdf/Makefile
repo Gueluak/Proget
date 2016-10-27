@@ -18,26 +18,27 @@ MLX_PATH = minilibx_macos/
 
 MLX = -lmlx
 
-LIBFT = libft/libft.a
+LIBFT = libft/libftprintf.a
 
 PTHREAD = -lpthread
 
-NAME = FDF2
+NAME = fdf
 
-INC_PATH = includes/
+INC_PATH = -I includes/ -I libft/includes/ -I minilibx_macos/
 
 SRC =	fdf_main.c\
 		fdf_pars.c\
 		fdf_grafic.c\
 		fdf_conv.c\
 		fdf_loop.c\
+		fdf_loop_b.c\
 		fdf_loop_only.c\
 		fdf_rot.c
 
 all : $(NAME)
 
 $(NAME) :
-	@gcc $(FLAG_GCC) -o $(NAME) -L $(MLX_PATH) -I $(INC_PATH) $(PTHREAD) $(MLX) $(FLAG_MLX) $(SRC) libft/libft.a
+	@gcc $(FLAG_GCC) -o $(NAME) -L $(MLX_PATH) $(INC_PATH) $(PTHREAD) $(MLX) $(FLAG_MLX) $(SRC) $(LIBFT)
 	@echo "$(NAME) create.\n"
 
 re :

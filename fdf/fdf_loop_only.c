@@ -10,13 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
 #include "fdf.h"
-#include "libft.h"
-#include <pthread.h>
-#include <time.h>
-#include <fcntl.h>
-#include <math.h>
 
 int		loop_only(void *v_graf)
 {
@@ -36,7 +30,7 @@ int		loop_only(void *v_graf)
 	loop_in(push, c, graf);
 	image->buffer = (char *)ft_memset(image->buffer, 0, \
 image->widht * image->height * 4);
-	ft_push_to_image(graf, graf->grid, image);
+	ft_push_to_image(graf, graf->grid);
 	mlx_put_image_to_window(graf->mlx_p, graf->mlx_w, graf->mlx_i, 0, 0);
 	return (0);
 }
