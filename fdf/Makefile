@@ -38,10 +38,12 @@ SRC =	fdf_main.c\
 all : $(NAME)
 
 $(NAME) :
+	@make -C libft/ all
 	@gcc $(FLAG_GCC) -o $(NAME) -L $(MLX_PATH) $(INC_PATH) $(PTHREAD) $(MLX) $(FLAG_MLX) $(SRC) $(LIBFT)
 	@echo "$(NAME) create.\n"
 
 re :
 	@rm -f $(NAME)
+	@make -C libft/ fclean
 	@echo "$(NAME) deleted.\n"
 	@make $(NAME)

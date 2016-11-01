@@ -129,6 +129,7 @@ void			ft_pixel_to_image(t_image *image, int x, int y, int color);
 void			ft_line_to_image\
 					(t_image *image, t_point p1, t_point p2);
 void			ft_error(int e);
-int				ft_push_to_image_in(t_graf *graf, pthread_t thruno[16]);
+int				ft_push_to_image_in(t_graf *graf, pthread_t thruno[8]\
+	, t_thr thr[8]);
 
 #endif

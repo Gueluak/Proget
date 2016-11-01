@@ -58,7 +58,8 @@ OBJ_NAME_FT =	ft_abs.o\
 			ft_putendl_fd.o\
 			ft_putstr_fd.o\
 			ft_strlen.o\
-			ft_toupper.o
+			ft_toupper.o\
+			writef.o
 
 OBJ_NAME_PRINTF =	mini_lib.o\
 				mini_lib_b.o\

@@ -78,7 +78,6 @@ void	return_null(t_env *env)
 
 	i = 0;
 	env->modif = 3;
-	
 	str = "(null)";
 	len = prf_strlen(str);
 	env->pressi == -1 ? env->pressi = len : 0;

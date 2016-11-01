@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-int		ft_printf(const char *format, ...)
+int		print(const char *format, ...)
 {
 	char		*form;
 	t_env		env;

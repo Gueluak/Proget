@@ -18,14 +18,14 @@ int		main(int ac, char **av)
 	t_push	push;
 	t_point	*c;
 
-	if (ac < 2)
+	if (ac < 2 || open(av[1], O_RDONLY) == -1)
 		ft_error(1);
 	graf.push = &push;
 	c = &graf.c;
 	init_fdf(&graf, &push, c);
 	graf.mlx_p = mlx_init();
-	graf.mlx_i = (t_image *)mlx_new_image(graf.mlx_p, 1200, 900);
 	graf.grid = ft_read_doc(av[1], &graf);
+	graf.mlx_i = (t_image *)mlx_new_image(graf.mlx_p, 1200, 900);
 	ft_push_to_image(&graf, graf.grid);
 	graf.mlx_w = mlx_new_window(graf.mlx_p, 1200, 900, av[1]);
 	mlx_put_image_to_window(graf.mlx_p, graf.mlx_w, graf.mlx_i, 0, 0);

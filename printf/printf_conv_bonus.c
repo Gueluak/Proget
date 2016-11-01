@@ -24,7 +24,7 @@ void	prf_con_m(t_env *env, va_list ap)
 	if (mem == NULL)
 	{
 		return_null(env);
-		return;
+		return ;
 	}
 	len = env->pressi == -1 ? 1 : env->pressi;
 	prf_print_mem(env, mem, len);
@@ -77,7 +77,7 @@ void	prf_con_b(t_env *env, va_list ap)
 	int				len;
 
 	arg = prf_u_arg(ap, *env);
-	env->flag &= ~ ZERO;
+	env->flag &= ~ZERO;
 	len = nb_len_b(arg, 2);
 	len = env->flag & SHARP ? len + (len - 1) / 4 : len;
 	env->flag & LESS ? 0 : prf_pos_field(env, len);
@@ -89,7 +89,7 @@ int		prf_itoa_bin(unsigned long nb, t_env *env, int index)
 {
 	if (nb >= 2)
 		prf_itoa_bin(nb >> 1, env, index + 1);
-	index % 4 == 0 && env->flag & SHARP && nb > 1 ? push_buff(' ', env) : 0; 
+	index % 4 == 0 && env->flag & SHARP && nb > 1 ? push_buff(' ', env) : 0;
 	push_buff((nb & 1) + '0', env);
 	return (index + 1);
 }

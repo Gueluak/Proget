@@ -59,7 +59,7 @@ void	prf_con_ls(t_env *env, va_list ap)
 	if (str == NULL)
 	{
 		return_null(env);
-		return;
+		return ;
 	}
 	len = prf_strlen_uni(str);
 	env->pressi == -1 ? env->pressi = len : 0;
@@ -75,9 +75,22 @@ void	prf_con_ls(t_env *env, va_list ap)
 
 void	prf_con_p(t_env *env, va_list ap)
 {
+	unsigned long	arg;
+	int				len;
+	int				i;
+
 	env->modif = 3;
 	env->flag |= SHARP;
-	prf_con_x(env, ap);
+	arg = prf_u_arg(ap, *env);
+	env->pressi == 0 && arg == 0 ? env->field++ : 0;
+	len = nb_len_b(arg, 16);
+	i = len < env->pressi ? env->pressi : len;
+	env->flag & ZERO ? aply_sharp(env, (env->flag & SHARP)) : 0;
+	env->flag & LESS ? 0 : prf_pos_field(env, i + (2 * (env->flag & SHARP)));
+	env->flag & ZERO ? 0 : aply_sharp(env, (env->flag & SHARP));
+	prf_pos_pressi(env, len);
+	env->pressi == 0 && arg == 0 ? 0 : prf_itoa_b(arg, env, 16, 0);
+	env->flag & LESS ? prf_pos_field(env, i + (2 * (env->flag & SHARP))) : 0;
 }
 
 void	prf_con_ld(t_env *env, va_list ap)

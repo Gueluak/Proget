@@ -24,9 +24,9 @@ int		loop_only(void *v_graf)
 	push = graf->push;
 	c = &graf->c;
 	if (push->un == 1)
-		graf->coef += 0.1;
+		graf->coef += 0.02;
 	if (push->trois == 1)
-		graf->coef -= 0.1;
+		graf->coef -= 0.02;
 	loop_in(push, c, graf);
 	image->buffer = (char *)ft_memset(image->buffer, 0, \
 image->widht * image->height * 4);

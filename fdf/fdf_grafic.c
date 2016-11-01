@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void	*thr_uno(void *v_thr)
+void			*thr_uno(void *v_thr)
 {
 	t_thr	*thr;
 	t_graf	*graf;
@@ -40,14 +40,15 @@ void	*thr_uno(void *v_thr)
 	pthread_exit(NULL);
 }
 
-void	ft_push_to_image(t_graf *graf, short **grid)
+void			ft_push_to_image(t_graf *graf, short **grid)
 {
-	pthread_t	thruno[16];
+	pthread_t	thruno[8];
 	int			i;
+	t_thr		thr[8];
 
 	grid = graf->grid;
 	graf->by = graf->y - 1;
-	i = ft_push_to_image_in(graf, thruno) + 1;
+	i = ft_push_to_image_in(graf, thruno, thr) + 1;
 	while (i > 0)
 	{
 		--i;
@@ -56,14 +57,14 @@ void	ft_push_to_image(t_graf *graf, short **grid)
 	graf->by = graf->y - 1;
 }
 
-int		ft_push_to_image_in(t_graf *graf, pthread_t thruno[16])
+inline int		ft_push_to_image_in(t_graf *graf, pthread_t thruno[8]\
+	, t_thr thr[8])
 {
 	int			i;
-	t_thr		thr[16];
 
 	i = 0;
 	while (graf->by >= 0)
-		if (i < 16)
+		if (i < 8)
 		{
 			thr[i].graf = graf;
 			thr[i].y = graf->by;
@@ -80,7 +81,7 @@ int		ft_push_to_image_in(t_graf *graf, pthread_t thruno[16])
 	return (i);
 }
 
-void	ft_pixel_to_image(t_image *image, int x, int y, int color)
+void			ft_pixel_to_image(t_image *image, int x, int y, int color)
 {
 	if (x < 599 && x > -600 && y < 449 && y > -450)
 	{
@@ -88,18 +89,10 @@ void	ft_pixel_to_image(t_image *image, int x, int y, int color)
 			(image->widht * 4 * (y + 450)))) < color)
 			*((int *)(image->buffer + (4 * (x + 600)) + \
 			(image->widht * 4 * (y + 450)))) = color;
-		if (*((int *)(image->buffer + (4 * (x + 601)) + \
-			(image->widht * 4 * (y + 450)))) < color)
-			*((int *)(image->buffer + (4 * (x + 601)) + \
-			(image->widht * 4 * (y + 450)))) = color;
-		if (*((int *)(image->buffer + (4 * (x + 600)) + \
-			(image->widht * 4 * (y + 451)))) < color)
-			*((int *)(image->buffer + (4 * (x + 600)) + \
-			(image->widht * 4 * (y + 451)))) = color;
 	}
 }
 
-void	ft_line_to_image(t_image *image, t_point p1, t_point p2)
+void			ft_line_to_image(t_image *image, t_point p1, t_point p2)
 {
 	t_point	tmp;
 	t_point	ini;

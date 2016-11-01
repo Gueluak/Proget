@@ -79,4 +79,7 @@ void	loop_in_c(t_push *push, t_graf *graf)
 		graf->shadow *= 1.1;
 	if (push->slash == 1)
 		graf->shadow /= 1.1;
+	graf->X = rot_mz(graf->X, graf->Z.x / 20);
+	graf->Y = rot_mz(graf->Y, graf->Z.x / 20);
+	graf->Z = rot_mz(graf->Z, graf->Z.x / 20);
 }

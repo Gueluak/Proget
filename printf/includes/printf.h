@@ -40,7 +40,7 @@ void			push_buff(char c, t_env *env);
 int				prf_conv(char *format, int i, t_env *env, va_list ap);
 int				char_chr(char c, char *chr);
 void			prf_conv_mod(t_env *env, va_list ap);
-int				ft_printf(const char *restrict format, ...);
+int				print(const char *restrict format, ...);
 int				prf_flag(char *form, int i, t_env *env);
 void			prf_flag_sharp(t_env *env);
 void			prf_flag_zero(t_env *env);

@@ -32,6 +32,16 @@ t_point		rot_my(t_point p, float rot)
 	return (t);
 }
 
+t_point		rot_mz(t_point p, float rot)
+{
+	t_point t;
+
+	t.x = (p.x * cos(rot)) + (p.y * -sin(rot));
+	t.y = (p.x * sin(rot)) + (p.y * cos(rot));
+	t.z = p.z;
+	return (t);
+}
+
 t_point		translate(t_point p, t_point t)
 {
 	p.x += t.x;
