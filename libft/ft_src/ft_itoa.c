@@ -33,7 +33,10 @@ char		*ft_itoa(long n)
 	int		i;
 	int		is_negatif;
 
-	n < 0 ?	is_negatif = 1 : is_negatif = 0;
+	if (n < 0)
+		is_negatif = 1;
+	else
+		is_negatif = 0;
 	i = ft_power(n) + is_negatif;
 	if (!(str = (char *)ft_memalloc(i + 1)))
 		return (NULL);
