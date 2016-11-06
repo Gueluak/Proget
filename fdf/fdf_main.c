@@ -22,7 +22,7 @@ int		main(int ac, char **av)
 		ft_error(1);
 	graf.push = &push;
 	c = &graf.c;
-	init_fdf(&graf, &push, c);
+	init_fdf(&graf, &push, c, ac == 3 ? ft_atoi(av[2]) : 80);
 	graf.mlx_p = mlx_init();
 	graf.grid = ft_read_doc(av[1], &graf);
 	graf.mlx_i = (t_image *)mlx_new_image(graf.mlx_p, 1200, 900);
@@ -36,12 +36,12 @@ int		main(int ac, char **av)
 	return (0);
 }
 
-void	init_fdf(t_graf *graf, t_push *push, t_point *c)
+void	init_fdf(t_graf *graf, t_push *push, t_point *c, int fov)
 {
 	graf->l = 0;
 	graf->h = 0;
 	graf->a = 0;
-	graf->X.x = 1;
+	graf->X.x = -1;
 	graf->X.y = 0;
 	graf->X.z = 0;
 	graf->Y.x = 0;
@@ -49,17 +49,17 @@ void	init_fdf(t_graf *graf, t_push *push, t_point *c)
 	graf->Y.z = 0;
 	graf->Z.x = 0;
 	graf->Z.y = 0;
-	graf->Z.z = 1;
-	graf->coef = 0.5;
+	graf->Z.z = -1;
+	graf->coef = 0.2;
 	graf->rot_x = 0;
 	graf->rot_y = 0;
 	graf->rot_z = 0;
 	graf->zoom = 10;
-	graf->face = 0;
-	graf->shadow = 30;
-	c->x = 1.2;
-	c->y = 2.5;
-	c->z = 5.1;
+	graf->fov = fov == 0 ? 80 : fov;
+	graf->shadow = 15;
+	c->x = -1.2;
+	c->y = -2.5;
+	c->z = -20.1;
 	init_fdf_2(push);
 }
 

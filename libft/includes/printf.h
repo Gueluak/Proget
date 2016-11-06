@@ -17,7 +17,7 @@
 # include <unistd.h>
 # include <wchar.h>
 
-# define BUFF_SIZE 100
+# define BUFF_SIZE 1024
 # define SHARP (1)
 # define ZERO (1 << 1)
 # define LESS (1 << 2)

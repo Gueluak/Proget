@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_power(int nbr)
+static int	ft_power(long nbr)
 {
 	int		i;
 
@@ -33,22 +33,17 @@ char		*ft_itoa(long n)
 	int		i;
 	int		is_negatif;
 
-	if (n < 0)
-		is_negatif = 1;
-	else
-		is_negatif = 0;
+	n < 0 ?	is_negatif = 1 : is_negatif = 0;
 	i = ft_power(n) + is_negatif;
 	if (!(str = (char *)ft_memalloc(i + 1)))
 		return (NULL);
-	if (n == 0)
-		str[0] = '0';
+	n == 0 ? str[0] = '0' : 0;
 	while (n != 0)
 	{
 		i--;
 		str[i] = (ft_abs(n % 10)) + '0';
 		n = n / 10;
 	}
-	if (is_negatif == 1)
-		str[0] = '-';
+	is_negatif == 1 ? str[0] = '-' : 0;
 	return (str);
 }

@@ -92,6 +92,7 @@ typedef struct	s_graf
 	t_push		*push;
 	short		**grid;
 	int			face;
+	int			fov;
 }				t_graf;
 
 typedef struct	s_thr
@@ -117,7 +118,7 @@ t_point			amp(t_point p, t_point t, float rot);
 t_point			translate(t_point p, t_point t);
 void			if_1(int *t, short ***grid, t_graf *graf);
 void			if_2(int *t, short ***grid, char *buff, t_graf *graf);
-void			init_fdf(t_graf *graf, t_push *push, t_point *c);
+void			init_fdf(t_graf *graf, t_push *push, t_point *c, int fov);
 void			init_fdf_2(t_push *push);
 void			loop_in(t_push *push, t_point *c, t_graf *graf);
 void			loop_in_b(t_push *push, t_graf *graf);

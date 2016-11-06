@@ -25,8 +25,8 @@ short	**ft_read_doc(char *file, t_graf *graf)
 	buff = (char *)ft_memalloc(1);
 	while ((t[1] = read(t[0], buff, 1)))
 	{
-		if (buff[0] == '\n')
-			if_1(t, &grid, graf);
+		buff[0] == 0 ? ft_error(1) : 0;
+		buff[0] == '\n' ? if_1(t, &grid, graf) : 0;
 		if (buff[0] == '-')
 			t[3] = -1;
 		if (buff[0] == ' ' && t[2] == 0)

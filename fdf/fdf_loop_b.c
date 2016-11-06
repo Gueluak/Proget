@@ -16,27 +16,27 @@ void	loop_in(t_push *push, t_point *c, t_graf *graf)
 {
 	if (push->a == 1)
 	{
-		c->x += (graf->X.x / 4);
-		c->y += (graf->Y.x / 4);
-		c->z += (graf->Z.x / 4);
+		c->x += (graf->X.x / 2);
+		c->y += (graf->Y.x / 2);
+		c->z += (graf->Z.x / 2);
 	}
 	if (push->d == 1)
 	{
-		c->x -= (graf->X.x / 4);
-		c->y -= (graf->Y.x / 4);
-		c->z -= (graf->Z.x / 4);
+		c->x -= (graf->X.x / 2);
+		c->y -= (graf->Y.x / 2);
+		c->z -= (graf->Z.x / 2);
 	}
 	if (push->w == 1)
 	{
-		c->x -= (graf->X.z / 4);
-		c->y -= (graf->Y.z / 4);
-		c->z -= (graf->Z.z / 4);
+		c->x -= (graf->X.z / 2);
+		c->y -= (graf->Y.z / 2);
+		c->z -= (graf->Z.z / 2);
 	}
 	if (push->s == 1)
 	{
-		c->x += (graf->X.z / 4);
-		c->y += (graf->Y.z / 4);
-		c->z += (graf->Z.z / 4);
+		c->x += (graf->X.z / 2);
+		c->y += (graf->Y.z / 2);
+		c->z += (graf->Z.z / 2);
 	}
 	loop_in_b(push, graf);
 }
@@ -79,7 +79,7 @@ void	loop_in_c(t_push *push, t_graf *graf)
 		graf->shadow *= 1.1;
 	if (push->slash == 1)
 		graf->shadow /= 1.1;
-	graf->X = rot_mz(graf->X, graf->Z.x / 20);
-	graf->Y = rot_mz(graf->Y, graf->Z.x / 20);
-	graf->Z = rot_mz(graf->Z, graf->Z.x / 20);
+	graf->X = rot_mz(graf->X, -graf->Z.x / 20);
+	graf->Y = rot_mz(graf->Y, -graf->Z.x / 20);
+	graf->Z = rot_mz(graf->Z, -graf->Z.x / 20);
 }

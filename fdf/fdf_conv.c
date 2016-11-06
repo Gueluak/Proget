@@ -26,7 +26,7 @@ t_point		ft_rot(int x, int y, int z, t_graf graf)
 	pt.x = (tmp.x * graf.X.x) + (tmp.y * graf.Y.x) + (tmp.z * graf.Z.x);
 	pt.y = (tmp.x * graf.X.y) + (tmp.y * graf.Y.y) + (tmp.z * graf.Z.y);
 	pt.z = (tmp.x * graf.X.z) + (tmp.y * graf.Y.z) + (tmp.z * graf.Z.z);
-	coef = ((pt.z != 0) ? (pt.z / 60) : (2));
+	coef = ((pt.z != 0) ? (pt.z / graf.fov) : (2));
 	pt.x = graf.zoom * pt.x / coef;
 	pt.y = graf.zoom * pt.y / coef;
 	a = (0xFF / ((float)ft_abs(pt.z) / graf.shadow));

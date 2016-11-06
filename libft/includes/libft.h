@@ -20,7 +20,7 @@
 # include <time.h>
 # include <sys/stat.h>
 
-int		ft_abs(int n);
+long	ft_abs(long n);
 int		ft_atoi(const char *str);
 int		ft_isascii(int c);
 char	*ft_itoa(long n);
