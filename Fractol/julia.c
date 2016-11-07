@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key.c                                              :+:      :+:    :+:   */
+/*   julia.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,26 +12,38 @@
 
 #include "fractol.h"
 
-int		key_on(int key, void *vgenv)
+void		julia(t_genv *genv)
 {
-	t_genv		*genv;
+	t_fract	f;
+	int		i;
+	int		x;
+	int		y;
 
-	genv = (t_genv *)vgenv;
-	if (key == ESC || key == Q)
-		ft_error_fract(0, genv);
-	if (key == L)
-		genv->lock = genv->lock ? 0 : 1;
-	if (key == LMAJ)
-		genv->graf->color = genv->graf->color ? 0 : 1;
-	genv->push[key] = 1;
-	return (0);
+	i = 0;
+	x = -1;
+	while (++x < W_W)
+	{
+		y = -1;
+		while (++y < W_H)
+		{
+			jul_init(&f, genv, x, y);
+			i = 0;
+			while (i++ < genv->iter && f.z_r * f.z_r + f.z_i * f.z_i < 4)
+			{
+				f.tmp = f.z_r;
+				f.z_r = f.z_r * f.z_r - f.z_i * f.z_i + f.c_r;
+				f.z_i = 2 * f.tmp * f.z_i + f.c_i;
+			}
+			put_pixel_to_img(genv->graf, (i < genv->iter ? get_color(i *
+				genv->graf->pad + genv->graf->start) : 0), x, y);
+		}
+	}
 }
 
-int		key_off(int key, void *vgenv)
+void		jul_init(t_fract *f, t_genv *genv, int x, int y)
 {
-	t_genv		*genv;
-
-	genv = (t_genv *)vgenv;
-	genv->push[key] = 0;
-	return (0);
+	f->z_r = (y - W_H / 2) / genv->graf->zoom + genv->posy;
+	f->z_i = (x - W_W / 2) / genv->graf->zoom + genv->posx;
+	f->c_r = (float)genv->my / 1000.0;
+	f->c_i = (float)genv->mx / 1000.0;
 }

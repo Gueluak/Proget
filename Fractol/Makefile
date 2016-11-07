@@ -26,9 +26,14 @@ NAME = fractol
 
 INC_PATH = -I includes/ -I libft/includes/ -I minilibx_macos/
 
-SRC =	main.c\
-		fractol_loop.c\
-		key.c
+SRC =	main.c			\
+		fractol_loop.c	\
+		key.c			\
+		graf.c			\
+		julia.c			\
+		jubis.c			\
+		mandel.c		\
+		mouse.c
 
 all : $(NAME)
 

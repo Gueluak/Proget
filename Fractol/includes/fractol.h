@@ -15,60 +15,115 @@
 # include "mlx.h"
 # include "libft.h"
 # include "printf.h"
+# include "key_define.h"
 # include <pthread.h>
 # include <time.h>
 # include <fcntl.h>
 # include <math.h>
 
-# define W_W 1200
-# define W_H 900
+# define W_W 400
+# define W_H 300
 
-typedef struct	s_image
+typedef struct		s_fract
 {
-	int				widht;
+	double	z_r;
+	double	z_i;
+	double	c_r;
+	double	c_i;
+	double	tmp;
+}					t_fract;
+
+typedef struct		s_image
+{
+	int				width;
 	int				height;
 	char			*buffer;
 	float			vertexes[8];
 	struct s_image	*next;
-}				t_image;
+}					t_image;
 
 typedef	struct		s_graf
 {
 	void			*mlx_p;
 	void			*mlx_w;
 	t_image			*mlx_i;
+	int				color;
+	double			pad;
+	int				start;
+	float			zoom;
 }					t_graf;
-
-typedef struct		s_push
-{
-
-}					t_push;
 
 typedef struct		s_genv
 {
+	int				fractal;
 	t_graf			*graf;
-	t_push			*push;
+	char			push[270];
+	int				iter;
+	int				lock;
+	int				mx;
+	int				my;
+	double			posx;
+	double			posy;
 }					t_genv;
 
-/* 
- --- main.c
+/*
+** --- main.c
 */
 
-void		fractol_init(t_genv *genv);
-t_graf		*fractol_init_graf(char *name);
-void		ft_error_fract(int code);
+void				fractol_init(t_genv *genv, char *frac);
+t_graf				*fractol_init_graf(char *name);
+void				ft_error_fract(int code, t_genv *genv);
 
 /*
- --- fractol_loop.c
+** --- fractol_loop.c
 */
 
-int			main_loop(void *vgenv);
+int					main_loop(void *vgenv);
+void				check_button(t_genv *genv);
 
 /*
- --- key.c
+** --- key.c
 */
 
-int			key_on(int key, void *vgenv);
-int			key_off(int key, void *vgenv);
+int					key_on(int key, void *vgenv);
+int					key_off(int key, void *vgenv);
+
+/*
+** --- graf.c
+*/
+
+void				put_pixel_to_img(t_graf *graf, unsigned int
+	color, int x, int y);
+unsigned int		get_color(unsigned int i);
+void				get_color_bis(unsigned char *red, unsigned char
+	*green, unsigned char *blue, unsigned int i);
+
+/*
+** --- mandel.c
+*/
+
+void				man_init(t_fract *f, t_genv *genv, int x, int y);
+void				mandel(t_genv *genv);
+
+/*
+** --- julia.c
+*/
+
+void				jul_init(t_fract *f, t_genv *genv, int x, int y);
+void				julia(t_genv *genv);
+
+/*
+** --- jubis.c
+*/
+
+void				jub_init(t_fract *f, t_genv *genv, int x, int y);
+void				jubis(t_genv *genv);
+
+/*
+** --- mouse.c
+*/
+
+int					mouse(int x, int y, t_genv *genv);
+int					mouse_m(int button, int x, int y, t_genv *genv);
 
 #endif

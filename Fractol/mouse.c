@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key.c                                              :+:      :+:    :+:   */
+/*   mouse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,26 +12,26 @@
 
 #include "fractol.h"
 
-int		key_on(int key, void *vgenv)
+int			mouse(int x, int y, t_genv *genv)
 {
-	t_genv		*genv;
-
-	genv = (t_genv *)vgenv;
-	if (key == ESC || key == Q)
-		ft_error_fract(0, genv);
-	if (key == L)
-		genv->lock = genv->lock ? 0 : 1;
-	if (key == LMAJ)
-		genv->graf->color = genv->graf->color ? 0 : 1;
-	genv->push[key] = 1;
+	genv->mx = genv->lock ? genv->mx : (x - W_W / 2);
+	genv->my = genv->lock ? genv->my : (y - W_H / 2);
 	return (0);
 }
 
-int		key_off(int key, void *vgenv)
+int			mouse_m(int button, int x, int y, t_genv *genv)
 {
-	t_genv		*genv;
-
-	genv = (t_genv *)vgenv;
-	genv->push[key] = 0;
+	if (button == 5)
+	{
+		genv->graf->zoom *= 1.04;
+		genv->posx += (x - W_W / 2) / (10 * genv->graf->zoom);
+		genv->posy += (y - W_H / 2) / (10 * genv->graf->zoom);
+	}
+	if (button == 4)
+	{
+		genv->graf->zoom /= 1.04;
+		genv->posx += (x - W_W / 2) / (10 * genv->graf->zoom);
+		genv->posy += (y - W_H / 2) / (10 * genv->graf->zoom);
+	}
 	return (0);
 }
