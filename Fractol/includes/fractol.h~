@@ -6,7 +6,7 @@
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/03/14 21:02:30 by hmarot            #+#    #+#             */
-/*   Updated: 2016/11/16 23:41:43 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/04/26 22:04:21 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,6 @@ void				julia(t_genv *genv);
 
 void				jub_init(t_fract *f, t_genv *genv, int x, int y);
 void				jubis(t_genv *genv);
-
-/*
-** --- burn.c
-*/
-
-void				bur_init(t_fract *f, t_genv *genv, int x, int y);
-void				burning(t_genv *genv);
 
 /*
 ** --- mouse.c
