@@ -6,11 +6,12 @@
 #    By: hmarot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/04 13:19:25 by hmarot            #+#    #+#              #
-#    Updated: 2016/10/09 21:31:14 by hmarot           ###   ########.fr        #
+#    Updated: 2016/11/16 23:36:25 by hmarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_NAME_FT =	ft_abs.c\
+			ft_d_abs.c\
 			ft_atoi.c\
 			ft_isascii.c\
 			ft_itoa.c\
@@ -44,6 +45,7 @@ SRC_NAME_PRINTF =	mini_lib.c\
 				printf_pre_field.c
 
 OBJ_NAME_FT =	ft_abs.o\
+			ft_d_abs.o\
 			ft_atoi.o\
 			ft_isascii.o\
 			ft_itoa.o\
@@ -77,7 +79,7 @@ OBJ_NAME_PRINTF =	mini_lib.o\
 				printf_pre_field.o
 
 NAME_FT = libft.a
-NAME_PRINTF = libprintf.a
+NAME_PRINTF = printf.a
 NAME = libftprintf.a
 
 PATH_FT = ft_src/

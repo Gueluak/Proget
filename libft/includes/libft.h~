@@ -6,7 +6,7 @@
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 21:15:49 by hmarot            #+#    #+#             */
-/*   Updated: 2016/11/16 23:36:50 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/05/06 22:26:36 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # include <sys/stat.h>
 
 long	ft_abs(long n);
-double	ft_d_abs(double n);
 int		ft_atoi(const char *str);
 int		ft_isascii(int c);
 char	*ft_itoa(long n);
