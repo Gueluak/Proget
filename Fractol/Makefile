@@ -6,7 +6,7 @@
 #    By: hmarot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/03/02 01:40:50 by hmarot            #+#    #+#              #
-#    Updated: 2016/11/16 23:38:26 by hmarot           ###   ########.fr        #
+#    Updated: 2016/11/17 01:33:06 by hmarot           ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -41,7 +41,7 @@ OBJ = $(addprefix objs/, $(OBJS))
 all : $(NAME)
 
 libs:
-	@make -C libft/
+	@make -C libft/ all
 
 $(NAME) : libs $(OBJ)
 	@gcc $(FLAG_GCC) -o $(NAME) $(INC_PATH) $(PTHREAD) $(MLX) $(FLAG_MLX) $(OBJ) $(LIBFT)
@@ -56,7 +56,8 @@ re : fclean
 
 clean :
 	@rm -f $(OBJ)
+	@make -C libft/ clean
 
 fclean : clean
 	@rm -f $(NAME)
-	@make -C libft/ fclean
+	@rm -f $(LIBFT)

@@ -34,8 +34,9 @@ void		julia(t_genv *genv)
 				f.z_r = f.z_r * f.z_r - f.z_i * f.z_i + f.c_r;
 				f.z_i = 2 * f.tmp * f.z_i + f.c_i;
 			}
-			put_pixel_to_img(genv->graf, (i < genv->iter ? get_color(i *
-				genv->graf->pad + genv->graf->start) : 0), x, y);
+			put_pixel_to_img(genv->graf, (i < genv->iter ? get_color((i *
+				genv->graf->pad +3000) * (cos((x - 500)/500.0) + cos ((y -
+					500)/500.0))+ genv->graf->start) : 0), x, y);
 		}
 	}
 }
@@ -44,6 +45,6 @@ void		jul_init(t_fract *f, t_genv *genv, int x, int y)
 {
 	f->z_r = (y - W_H / 2) / genv->graf->zoom + genv->posy;
 	f->z_i = (x - W_W / 2) / genv->graf->zoom + genv->posx;
-	f->c_r = genv->is_time ? cos(genv->time) : (float)genv->my / 1000.0;
-	f->c_i = genv->is_time ? sin(genv->time) : (float)genv->mx / 1000.0;
+	f->c_r = genv->is_time ? cos(genv->time) : (float)genv->my / 300.0;
+	f->c_i = genv->is_time ? sin(genv->time) : (float)genv->mx / 300.0;
 }

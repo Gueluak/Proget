@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-void	prf_con_x(t_env *env, va_list ap)
+void	prf_con_x(t_penv *env, va_list ap)
 {
 	unsigned long	arg;
 	int				len;
@@ -30,7 +30,7 @@ void	prf_con_x(t_env *env, va_list ap)
 	env->flag & LESS ? prf_pos_field(env, i + (2 * (env->flag & SHARP))) : 0;
 }
 
-void	prf_con_lx(t_env *env, va_list ap)
+void	prf_con_lx(t_penv *env, va_list ap)
 {
 	unsigned long	arg;
 	int				len;
@@ -47,7 +47,7 @@ void	prf_con_lx(t_env *env, va_list ap)
 	env->flag & LESS ? prf_pos_field(env, i + (2 * (env->flag & SHARP))) : 0;
 }
 
-void	prf_con_c(t_env *env, va_list ap)
+void	prf_con_c(t_penv *env, va_list ap)
 {
 	char	c;
 
@@ -58,7 +58,7 @@ void	prf_con_c(t_env *env, va_list ap)
 	env->flag & LESS ? prf_pos_field(env, 1) : 0;
 }
 
-void	prf_con_lc(t_env *env, va_list ap)
+void	prf_con_lc(t_penv *env, va_list ap)
 {
 	wchar_t	c;
 
@@ -69,7 +69,7 @@ void	prf_con_lc(t_env *env, va_list ap)
 	env->flag & LESS ? prf_pos_field(env, 1) : 0;
 }
 
-void	return_null(t_env *env)
+void	return_null(t_penv *env)
 {
 	char	*str;
 	int		i;

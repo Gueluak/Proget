@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-void	prf_con_m(t_env *env, va_list ap)
+void	prf_con_m(t_penv *env, va_list ap)
 {
 	unsigned char	*mem;
 	int				i;
@@ -30,7 +30,7 @@ void	prf_con_m(t_env *env, va_list ap)
 	prf_print_mem(env, mem, len);
 }
 
-void	prf_print_mem(t_env *env, unsigned char *mem, int len)
+void	prf_print_mem(t_penv *env, unsigned char *mem, int len)
 {
 	int		i;
 
@@ -46,7 +46,7 @@ void	prf_print_mem(t_env *env, unsigned char *mem, int len)
 	}
 }
 
-void	prf_mod_int(t_env *env, unsigned char *mem, int i, int len)
+void	prf_mod_int(t_penv *env, unsigned char *mem, int i, int len)
 {
 	int		nb;
 	int		j;
@@ -71,7 +71,7 @@ void	prf_mod_int(t_env *env, unsigned char *mem, int i, int len)
 	i < len ? push_buff('\n', env) : 0;
 }
 
-void	prf_con_b(t_env *env, va_list ap)
+void	prf_con_b(t_penv *env, va_list ap)
 {
 	unsigned long	arg;
 	int				len;
@@ -85,7 +85,7 @@ void	prf_con_b(t_env *env, va_list ap)
 	env->flag & LESS ? prf_pos_field(env, len) : 0;
 }
 
-int		prf_itoa_bin(unsigned long nb, t_env *env, int index)
+int		prf_itoa_bin(unsigned long nb, t_penv *env, int index)
 {
 	if (nb >= 2)
 		prf_itoa_bin(nb >> 1, env, index + 1);

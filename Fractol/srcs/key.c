@@ -35,5 +35,9 @@ int		key_off(int key, void *vgenv)
 
 	genv = (t_genv *)vgenv;
 	genv->push[key] = 0;
+	if (key == H)
+	{
+		print("%20s%5d\n%20s%5d\n\n","iteration :",genv->iter,"color amplitude :",(int)genv->graf->pad);
+	}
 	return (0);
 }

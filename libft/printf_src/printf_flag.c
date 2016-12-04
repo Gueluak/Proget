@@ -12,10 +12,10 @@
 
 #include "printf.h"
 
-int		prf_flag(char *form, int i, t_env *env)
+int		prf_flag(char *form, int i, t_penv *env)
 {
 	int		j;
-	void	(*tab_conv[5])(t_env *env);
+	void	(*tab_conv[5])(t_penv *env);
 
 	tab_conv[0] = prf_flag_sharp;
 	tab_conv[1] = prf_flag_zero;

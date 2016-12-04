@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-void	prf_init(t_env *env)
+void	prf_init(t_penv *env)
 {
 	env->flag = 0;
 	env->pressi = -1;
@@ -23,7 +23,7 @@ void	prf_init(t_env *env)
 	env->err = 0;
 }
 
-void	prf_loop(t_env *env)
+void	prf_loop(t_penv *env)
 {
 	env->flag = 0;
 	env->pressi = -1;

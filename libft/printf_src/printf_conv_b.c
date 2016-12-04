@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-void	prf_conv_mod(t_env *env, va_list ap)
+void	prf_conv_mod(t_penv *env, va_list ap)
 {
 	if (ap == NULL)
 		ap = NULL;
@@ -21,7 +21,7 @@ void	prf_conv_mod(t_env *env, va_list ap)
 	env->flag & LESS ? prf_pos_field(env, 1) : 0;
 }
 
-void	prf_con_s(t_env *env, va_list ap)
+void	prf_con_s(t_penv *env, va_list ap)
 {
 	char	*str;
 	int		i;
@@ -44,7 +44,7 @@ void	prf_con_s(t_env *env, va_list ap)
 	env->flag & LESS ? prf_pos_field(env, j) : 0;
 }
 
-void	prf_con_ls(t_env *env, va_list ap)
+void	prf_con_ls(t_penv *env, va_list ap)
 {
 	wchar_t	*str;
 	int		i;
@@ -73,14 +73,14 @@ void	prf_con_ls(t_env *env, va_list ap)
 	env->flag & LESS ? prf_pos_field(env, j) : 0;
 }
 
-void	prf_con_p(t_env *env, va_list ap)
+void	prf_con_p(t_penv *env, va_list ap)
 {
 	env->modif = 3;
 	env->flag |= SHARP;
 	prf_con_x(env, ap);
 }
 
-void	prf_con_ld(t_env *env, va_list ap)
+void	prf_con_ld(t_penv *env, va_list ap)
 {
 	env->modif = 3;
 	prf_con_id(env, ap);

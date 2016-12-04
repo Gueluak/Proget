@@ -6,43 +6,13 @@
 #    By: hmarot <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/04 13:19:25 by hmarot            #+#    #+#              #
-#    Updated: 2016/11/16 23:36:25 by hmarot           ###   ########.fr        #
+#    Updated: 2016/11/17 01:10:58 by hmarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC_NAME_FT =	ft_abs.c\
-			ft_d_abs.c\
-			ft_atoi.c\
-			ft_isascii.c\
-			ft_itoa.c\
-			ft_itoa_octal.c\
-			ft_itoa_hexa.c\
-			ft_memalloc.c\
-			ft_memcmp.c\
-			ft_memmove.c\
-			ft_memnchr.c\
-			ft_memndup.c\
-			ft_memset.c\
-			ft_putendl_fd.c\
-			ft_putstr_fd.c\
-			ft_strlen.c\
-			ft_toupper.c
+INC_PATH = -I includes/
 
-SRC_NAME_PRINTF =	mini_lib.c\
-				mini_lib_b.c\
-				mini_lib_c.c\
-				printf_arg.c\
-				printf_conv.c\
-				printf_conv_b.c\
-				printf_conv_bonus.c\
-				printf_conv_c.c\
-				printf_conv_d.c\
-				printf_flag.c\
-				printf_flag_a.c\
-				printf_init.c\
-				printf_main.c\
-				printf_modif.c\
-				printf_pre_field.c
+FLAG_GCC = -Werror -Wall -Wextra
 
 OBJ_NAME_FT =	ft_abs.o\
 			ft_d_abs.o\
@@ -60,7 +30,8 @@ OBJ_NAME_FT =	ft_abs.o\
 			ft_putendl_fd.o\
 			ft_putstr_fd.o\
 			ft_strlen.o\
-			ft_toupper.o
+			ft_toupper.o\
+			ft_strncat.o
 
 OBJ_NAME_PRINTF =	mini_lib.o\
 				mini_lib_b.o\
@@ -88,33 +59,29 @@ PATH_PRINTF = printf_src/
 PATH_OBJ_FT = ft_obj/
 PATH_OBJ_PRINTF = printf_obj/
 
-SRC_FT = $(addprefix $(PATH_FT),$(SRC_NAME_FT))
-SRC_PRINTF = $(addprefix $(PATH_PRINTF),$(SRC_NAME_PRINTF))
-
 OBJ_FT = $(addprefix $(PATH_OBJ_FT),$(OBJ_NAME_FT))
 OBJ_PRINTF = $(addprefix $(PATH_OBJ_PRINTF),$(OBJ_NAME_PRINTF))
 
 only_lib: 
 	@make fclean && make all && make clean
 
-all:
-	@gcc -Wall -Werror -Wextra -c $(SRC_PRINTF) $(SRC_FT) -I includes
-	@mv $(OBJ_NAME_PRINTF) $(PATH_OBJ_PRINTF)
-	@mv $(OBJ_NAME_FT) $(PATH_OBJ_FT)
+all: $(OBJ_PRINTF) $(OBJ_FT)
 	@ar rc $(NAME) $(OBJ_PRINTF) $(OBJ_FT)
 	@echo "$(NAME) compiler"
 
-printf:
-	@gcc -Wall -Werror -Wextra -c $(SRC_PRINTF) -I includes
-	@mv $(OBJ_NAME_PRINTF) $(PATH_OBJ_PRINTF)
+printf: $(OBJ_PRINTF)
 	@ar rc $(NAME_PRINTF) $(OBJ_PRINTF)
 	@echo "$(NAME_PRINTF) compiler"
 
-libft:
-	@gcc -Wall -Werror -Wextra -c $(SRC_FT) -I includes
-	@mv $(OBJ_NAME_FT) $(PATH_OBJ_FT)
-	@ar rc $(NAME_FT) $(OBJ_PFT)
+libft: $(OBJ_FT)
+	@ar rc $(NAME_FT) $(OBJ_FT)
 	@echo "$(NAME_FT) compiler"
+
+ft_obj/%.o : $(PATH_FT)%.c
+	@gcc $(FLAG_GCC) -c $< -o $@ $(INC_PATH)
+
+$(PATH_OBJ_PRINTF)%.o : $(PATH_PRINTF)%.c
+	@gcc $(FLAG_GCC) -c $< -o $@ $(INC_PATH)
 
 clean:
 	@rm -f $(OBJ_FT) $(OBJ_PRINTF)

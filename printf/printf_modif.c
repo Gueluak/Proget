@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-int		prf_modif(char *form, int i, t_env *env)
+int		prf_modif(char *form, int i, t_penv *env)
 {
 	if (form[i] == 'h' && form[i + 1] == 'h')
 		env->modif = 1;

@@ -34,8 +34,8 @@ void		mandel(t_genv *genv)
 				f.z_r = f.z_r * f.z_r - f.z_i * f.z_i + f.c_r;
 				f.z_i = 2 * f.tmp * f.z_i + f.c_i;
 			}
-			put_pixel_to_img(genv->graf, (i < genv->iter ? get_color(i *
-				genv->graf->pad + genv->graf->start) : 0), x, y);
+			put_pixel_to_img(genv->graf, (i < genv->iter ? get_color((i *
+				genv->graf->pad + genv->graf->start) * (cos((x - 500)/500.0) + cos ((y - 500)/500.0))) : 0), x, y);
 		}
 	}
 }

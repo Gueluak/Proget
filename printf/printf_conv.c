@@ -12,10 +12,10 @@
 
 #include "printf.h"
 
-int		prf_conv(char *format, int i, t_env *env, va_list ap)
+int		prf_conv(char *format, int i, t_penv *env, va_list ap)
 {
 	int		j;
-	void	(*tab_conv[17])(t_env *env, va_list ap);
+	void	(*tab_conv[17])(t_penv *env, va_list ap);
 
 	tab_conv[0] = prf_conv_mod;
 	tab_conv[1] = prf_con_id;

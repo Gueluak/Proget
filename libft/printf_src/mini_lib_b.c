@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-void	push_buff(char c, t_env *env)
+void	push_buff(char c, t_penv *env)
 {
 	if (env->pos < BUFF_SIZE)
 	{
@@ -28,7 +28,7 @@ void	push_buff(char c, t_env *env)
 	}
 }
 
-int		push_uni(wchar_t c, t_env *env, int nbbi)
+int		push_uni(wchar_t c, t_penv *env, int nbbi)
 {
 	if (nbbi >= 1 && nbbi <= 7)
 		push_buff(c, env);

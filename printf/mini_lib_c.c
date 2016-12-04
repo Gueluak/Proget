@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-void	aply_signe(long nb, t_env *env)
+void	aply_signe(long nb, t_penv *env)
 {
 	if (nb < 0)
 		push_buff('-', env);

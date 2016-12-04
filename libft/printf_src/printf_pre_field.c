@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-int		prf_pressi(char *form, int i, t_env *env)
+int		prf_pressi(char *form, int i, t_penv *env)
 {
 	int		j;
 
@@ -31,7 +31,7 @@ int		prf_pressi(char *form, int i, t_env *env)
 	return (i);
 }
 
-void	prf_pos_pressi(t_env *env, int len)
+void	prf_pos_pressi(t_penv *env, int len)
 {
 	if (env->pressi != -1)
 	{
@@ -43,7 +43,7 @@ void	prf_pos_pressi(t_env *env, int len)
 	}
 }
 
-int		prf_field(char *form, int i, t_env *env)
+int		prf_field(char *form, int i, t_penv *env)
 {
 	int		j;
 
@@ -56,7 +56,7 @@ int		prf_field(char *form, int i, t_env *env)
 	return (i);
 }
 
-void	prf_pos_field(t_env *env, int len)
+void	prf_pos_field(t_penv *env, int len)
 {
 	while (len < env->field)
 	{

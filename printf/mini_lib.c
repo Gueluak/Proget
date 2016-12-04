@@ -27,7 +27,7 @@ int		nb_len(long nb)
 	return (i);
 }
 
-void	aply_sharp(t_env *env, int conv)
+void	aply_sharp(t_penv *env, int conv)
 {
 	if (conv == 1)
 	{
@@ -58,7 +58,7 @@ int		nb_len_b(unsigned long nb, int b)
 	return (i);
 }
 
-void	prf_itoa(long nb, t_env *env)
+void	prf_itoa(long nb, t_penv *env)
 {
 	long	tmp;
 
@@ -68,7 +68,7 @@ void	prf_itoa(long nb, t_env *env)
 	push_buff(((tmp < 0 ? -tmp : tmp) + '0'), env);
 }
 
-void	prf_itoa_b(unsigned long nb, t_env *env, int b, int maj)
+void	prf_itoa_b(unsigned long nb, t_penv *env, int b, int maj)
 {
 	char	*base;
 

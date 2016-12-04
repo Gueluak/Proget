@@ -12,7 +12,7 @@
 
 #include "printf.h"
 
-unsigned long	prf_u_arg(va_list ap, t_env env)
+unsigned long	prf_u_arg(va_list ap, t_penv env)
 {
 	if (env.modif == 0)
 		return (va_arg(ap, unsigned int));
@@ -25,7 +25,7 @@ unsigned long	prf_u_arg(va_list ap, t_env env)
 	return (0);
 }
 
-long			prf_arg(va_list ap, t_env env)
+long			prf_arg(va_list ap, t_penv env)
 {
 	if (env.modif == 0)
 		return (va_arg(ap, int));

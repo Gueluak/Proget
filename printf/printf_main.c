@@ -6,16 +6,16 @@
 /*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2016/06/19 11:42:09 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/11/23 06:25:12 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int		print(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	char		*form;
-	t_env		env;
+	t_penv		env;
 	int			i;
 	va_list		ap;
 
@@ -35,7 +35,7 @@ int		print(const char *format, ...)
 	return (env.ret + env.pos);
 }
 
-int		prf_main_b(char *form, t_env *env, int i, va_list ap)
+int		prf_main_b(char *form, t_penv *env, int i, va_list ap)
 {
 	if (form[i] != '%')
 		push_buff(form[i], env);

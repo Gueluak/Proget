@@ -38,4 +38,5 @@ void	ft_putstr_fd(char *s, int fd);
 size_t	ft_strlen(const char *s);
 void	ft_toupper(char **str);
 int		writef(const char *format, ...);
+char	*ft_strncat(char *s1, char *s2, size_t n);
 #endif
