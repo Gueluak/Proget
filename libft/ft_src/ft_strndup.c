@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   filler.h                                           :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/03/14 21:02:30 by hmarot            #+#    #+#             */
-/*   Updated: 2016/12/08 03:40:29 by hmarot           ###   ########.fr       */
+/*   Created: 2016/02/07 13:39:53 by hmarot            #+#    #+#             */
+/*   Updated: 2016/12/05 04:51:13 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "printf.h"
 
-# define BUFF 1
-
-typedef struct	s_map
+char		*ft_strndup(char *src, size_t size)
 {
-	int			x_grid;
-	int			y_grid;
-	int			**grid;
-	int			x_pce;
-	int			y_pce;
-	int			**pce;
-	int			player;
-}				t_map;
+	char	*dst;
+	size_t	i;
 
-void		pars_grid(t_map *map);
+	i = 0;
+	dst = ft_memalloc(size + 1);
+	while (i < size)
+	{
+		(dst)[i] = (src)[i];
+		i++;
+	}
+	return (dst);
+}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 21:15:49 by hmarot            #+#    #+#             */
-/*   Updated: 2016/11/16 23:36:50 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/12/05 04:51:32 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <dirent.h>
 # include <time.h>
 # include <sys/stat.h>
+# include <fcntl.h>
 
 long	ft_abs(long n);
 double	ft_d_abs(double n);
@@ -39,4 +40,6 @@ size_t	ft_strlen(const char *s);
 void	ft_toupper(char **str);
 int		writef(const char *format, ...);
 char	*ft_strncat(char *s1, char *s2, size_t n);
+char	*ft_strndup(char *src, size_t size);
+int		gnl(int fd, char **line);
 #endif

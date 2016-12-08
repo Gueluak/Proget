@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf_main.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2016/06/19 11:42:09 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/12/08 02:44:34 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		print(const char *format, ...)
 		if (i == -1)
 			return (-1);
 	}
-	write(1, env.buffer, env.pos);
+	write(2, env.buffer, env.pos);
 	va_end(ap);
 	return (env.ret + env.pos);
 }

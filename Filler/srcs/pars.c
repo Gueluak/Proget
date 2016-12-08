@@ -1,58 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   pars.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/12/08 02:26:04 by hmarot            #+#    #+#             */
+/*   Updated: 2016/12/08 04:04:15 by hmarot           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "filler.h"
 
-void	ft_pars(t_map *map)
+void		pars_grid(t_map *map)
 {
-	int		x;
-	int		y;
+	char	*str;
 	int		i;
 	int		j;
-	int		k;
-	char	*str;
 
-	x = 0;
-	y = 0;
-	i = 0;
 	j = 0;
-	k = 0;
-	map->plateau = ft_tableau(&x, &y);
-	free(read_line(0));
-	while (j < y)
+	gnl(0, &str);
+	map->y_grid = ft_atoi(str + 7);
+	map->x_grid = ft_atoi(str + 11);
+	gnl(0, &str);
+	map->grid = (int **)ft_memalloc(map->y_grid * sizeof(int *));
+	while (j < map->y_grid)
 	{
+		gnl(0, &str);
 		i = 4;
-		k = 0;
-		str = read_line(0);
-		while (k < x)
+		map->grid[j] = (int *)ft_memalloc(map->x_grid * sizeof(int));
+		print("\n");
+		while(i < map->x_grid + 4)
 		{
-			//write(2, "malin\n", 6);
-			str[i] == '.' ? map->plateau[j][k] = 0 : 0;
-			str[i] == 'o' || str[i] == 'O' ? map->plateau[j][k] = 1 : 0;
-			str[i] == 'x' || str[i] == 'X' ? map->plateau[j][k] = 2 : 0;
+			if (str[i] != '.')
+				map->grid[j][i - 4] = (str[i] == 'O' || str[i] == 'o' ? 1 : 2);
+			print("%d", map->grid[j][i - 4]);
 			i++;
-			k++;
 		}
-		free(str);
-		map->plateau[j][k] = -1;
 		j++;
 	}
-}
-
-int		**ft_tableau(int *x, int *y)
-{
-	char	*str;
-	int		**tab;
-	int		i;
-
-	i = 0;
-	str = read_line(0);
-	*y = ft_atoi(str + 8);
-	print("str = %s\n", str);
-	*x = ft_atoi(str + 11);
-	free(str);
-	tab = ft_memalloc(*y * sizeof(int *) + 1);
-	while(i < *y)
+	gnl(0, &str);
+	map->y_pce = ft_atoi(str + 6);
+	map->x_pce = ft_atoi(str + 8);
+	j = 0;
+	print("\n");
+	map->pce = (int **)ft_memalloc(map->y_pce * sizeof(int *));
+	while (j < map->y_pce)
 	{
-		tab[i] = ft_memalloc(*x * sizeof(int) + 1);
-		i++;
+		i = 0;
+		gnl(0, &str);
+		while (i < map->x_pce)
+		{
+			map->pce[j] = (int *)ft_memalloc(map->x_pce * sizeof(int));
+			if (str[i] == '*')
+				map->pce[j][i] = 1;
+			print("%d",map->pce[j][i]);
+			i++;
+		}
+		print("\n");
+		j++;
 	}
-	return(tab);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf_main.c                                      :+:      :+:    :+:   */
+/*   mini_lib_b.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hmarot <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/14 12:04:11 by hmarot            #+#    #+#             */
-/*   Updated: 2016/04/05 10:18:20 by hmarot           ###   ########.fr       */
+/*   Updated: 2016/12/08 02:44:24 by hmarot           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	push_buff(char c, t_penv *env)
 	}
 	else
 	{
-		write(1, env->buffer, BUFF_SIZE);
+		write(2, env->buffer, BUFF_SIZE);
 		env->ret += env->pos;
 		env->pos = 0;
 		push_buff(c, env);

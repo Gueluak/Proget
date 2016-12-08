@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmarot <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/04 13:19:25 by hmarot            #+#    #+#              #
-#    Updated: 2016/11/17 01:10:58 by hmarot           ###   ########.fr        #
+#    Updated: 2016/12/08 02:41:34 by hmarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,6 @@ FLAG_GCC = -Werror -Wextra -Wall
 SRC_PATH = srcs/
 
 OBJ_NAME = test.o\
-			read_line.o\
 			pars.o
 
 OBJ_PATH = objs/

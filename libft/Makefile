@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: hmarot <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: hmarot <hmarot@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/12/04 13:19:25 by hmarot            #+#    #+#              #
-#    Updated: 2016/11/17 01:10:58 by hmarot           ###   ########.fr        #
+#    Updated: 2016/12/08 02:43:07 by hmarot           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ OBJ_NAME_FT =	ft_abs.o\
 			ft_putstr_fd.o\
 			ft_strlen.o\
 			ft_toupper.o\
-			ft_strncat.o
+			ft_strncat.o\
+			ft_strndup.o\
+			gnl.o
 
 OBJ_NAME_PRINTF =	mini_lib.o\
 				mini_lib_b.o\
